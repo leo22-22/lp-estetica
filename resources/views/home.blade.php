@@ -408,4 +408,20 @@
     </div>
 </section>
 
+<!-- Lightbox da Galeria -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar item da galeria">
+    <div class="lightbox-inner">
+        <button id="lb-close" class="lightbox-close" aria-label="Fechar">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-preview">
+            <i id="lb-icon" class="fas fa-image"></i>
+        </div>
+        <div class="lightbox-caption">
+            <h4 id="lb-title"></h4>
+            <span id="lb-category"></span>
+        </div>
+    </div>
+</div>
+
 @endsection

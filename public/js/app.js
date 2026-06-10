@@ -67,6 +67,34 @@
     });
   });
 
+  /* ---- Gallery lightbox ---- */
+  const lightbox    = document.getElementById('lightbox');
+  const lbClose     = document.getElementById('lb-close');
+  const lbTitle     = document.getElementById('lb-title');
+  const lbCategory  = document.getElementById('lb-category');
+  const lbIcon      = document.getElementById('lb-icon');
+
+  function openLightbox(item) {
+    const title    = item.querySelector('.galeria-placeholder span')?.textContent.trim() || '';
+    const category = item.dataset.category || '';
+    const iconEl   = item.querySelector('.galeria-placeholder i');
+    lbTitle.textContent    = title;
+    lbCategory.textContent = category.charAt(0).toUpperCase() + category.slice(1).replace(/-/g, ' ');
+    lbIcon.className       = iconEl ? iconEl.className : 'fas fa-image';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  galeriaItems.forEach(item => item.addEventListener('click', () => openLightbox(item)));
+  lbClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
   /* ---- Phone mask ---- */
   const phoneInput = document.getElementById('telefone');
   phoneInput?.addEventListener('input', e => {

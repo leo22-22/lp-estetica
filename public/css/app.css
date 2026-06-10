@@ -985,6 +985,87 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
 }
 
 /* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.88);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-inner {
+  max-width: 520px;
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transform: scale(.88);
+  transition: transform .3s ease;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+}
+.lightbox.open .lightbox-inner { transform: scale(1); }
+
+.lightbox-close {
+  position: absolute;
+  top: .75rem; right: .75rem;
+  width: 36px; height: 36px;
+  background: rgba(0,0,0,.45);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: .9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background var(--transition);
+}
+.lightbox-close:hover { background: var(--primary); }
+
+.lightbox-preview {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--primary-lt) 0%, var(--section-alt) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--primary);
+}
+.lightbox-preview i { font-size: 5rem; opacity: .35; }
+
+.lightbox-caption {
+  padding: 1.25rem 1.5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.lightbox-caption h4 { font-size: 1.15rem; color: var(--dark); margin-bottom: .35rem; }
+.lightbox-caption span {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-lt);
+  padding: .2rem .65rem;
+  border-radius: 50px;
+}
+
+/* ============================================================
    FLOAT BUTTONS
    ============================================================ */
 .whatsapp-float {
@@ -1064,7 +1145,11 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
   .hero-stats { gap: 1rem; padding: 1rem; }
   .stat-divider { display: none; }
 
-  .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .footer-logo { justify-content: center; }
+  .footer-social { justify-content: center; }
+  .footer-contact-item { justify-content: center; text-align: left; max-width: 220px; margin-left: auto; margin-right: auto; }
+  .footer-links ul li, .footer-services ul li { text-align: center; }
 
   .form-row { grid-template-columns: 1fr; }
 

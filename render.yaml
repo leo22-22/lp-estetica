@@ -22,7 +22,7 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        value: https://lp-estetica.onrender.com
+        value: https://eduarda-cardoso-estetica.onrender.com
 
       - key: DB_CONNECTION
         value: pgsql
