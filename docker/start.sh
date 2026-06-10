@@ -20,5 +20,8 @@ echo "==> Otimizando..."
 php artisan optimize:clear
 php artisan optimize
 
+echo "==> Ajustando permissões..."
+chmod -R 777 storage bootstrap/cache
+
 echo "==> Iniciando serviços..."
 exec /usr/bin/supervisord -c /etc/supervisord.conf

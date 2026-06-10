@@ -51,8 +51,8 @@
     <!-- ===== SCHEMA.ORG (Google Rich Results) ===== -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BeautySalon",
+      "@@context": "https://schema.org",
+      "@@type": "BeautySalon",
       "name": "Eduarda Cardoso Estética",
       "description": "Especialista em limpeza de pele, micropigmentação, massagem relaxante, peeling facial e radiofrequência.",
       "url": "{{ config('app.url') }}",
@@ -64,13 +64,13 @@
       ],
       "openingHoursSpecification": [
         {
-          "@type": "OpeningHoursSpecification",
+          "@@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
           "opens": "09:00",
           "closes": "19:00"
         },
         {
-          "@type": "OpeningHoursSpecification",
+          "@@type": "OpeningHoursSpecification",
           "dayOfWeek": "Saturday",
           "opens": "09:00",
           "closes": "14:00"
