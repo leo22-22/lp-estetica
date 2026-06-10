@@ -38,11 +38,6 @@ COPY docker/nginx/render.conf /etc/nginx/http.d/default.conf
 # Config Supervisord
 COPY docker/supervisord.conf /etc/supervisord.conf
 
-# Otimizações Laravel para produção
-RUN php artisan config:cache 2>/dev/null || true \
-    && php artisan route:cache 2>/dev/null || true \
-    && php artisan view:cache 2>/dev/null || true
-
 COPY docker/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
