@@ -2,7 +2,7 @@ FROM php:8.5-fpm-alpine
 
 WORKDIR /var/www/html
 
-# Dependências do sistema + extensões PHP
+# Dependências do sistema
 RUN apk add --no-cache \
     nginx \
     supervisor \
@@ -13,11 +13,14 @@ RUN apk add --no-cache \
     git \
     libpng-dev \
     libjpeg-turbo-dev \
+    freetype-dev \
     libxml2-dev \
     oniguruma-dev \
-    postgresql-dev \
-    && docker-php-ext-configure gd --with-jpeg \
-    && docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd \
+    libpq-dev
+
+# Extensões PHP
+RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
+    && docker-php-ext-install pdo_mysql pdo_pgsql mbstring pcntl bcmath gd \
     && docker-php-ext-enable opcache
 
 # Composer
