@@ -344,8 +344,7 @@
 
             <!-- Form -->
             <div class="contato-form-wrapper" data-aos="fade-left">
-                <form action="{{ route('contato') }}" method="POST" class="contato-form" id="contato-form">
-                    @csrf
+                <form class="contato-form" id="contato-form" data-wpp="{{ env('WHATSAPP_NUMBER', '5511999999999') }}" novalidate>
                     <h3>Solicitar Agendamento</h3>
 
                     @if($errors->any())

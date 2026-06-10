@@ -95,6 +95,33 @@
   lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+  /* ---- Contact form → WhatsApp ---- */
+  const contatoForm = document.getElementById('contato-form');
+  contatoForm?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nome     = document.getElementById('nome').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const servico  = document.getElementById('servico').value;
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (!nome || !telefone || !servico) {
+      document.querySelectorAll('#contato-form [required]').forEach(f => f.reportValidity());
+      return;
+    }
+
+    const wpp   = (this.dataset.wpp || '5511999999999').replace(/\D/g, '');
+    const lines = ['Olá! Gostaria de agendar um horário.', ''];
+    lines.push(`*Nome:* ${nome}`);
+    lines.push(`*Telefone:* ${telefone}`);
+    if (email)    lines.push(`*E-mail:* ${email}`);
+    lines.push(`*Serviço:* ${servico}`);
+    if (mensagem) lines.push(`*Mensagem:* ${mensagem}`);
+
+    window.open(`https://wa.me/${wpp}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+    contatoForm.reset();
+  });
+
   /* ---- Phone mask ---- */
   const phoneInput = document.getElementById('telefone');
   phoneInput?.addEventListener('input', e => {

@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\AntesDepois;
 use App\Models\Contato;
+use App\Models\Servico;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $servicos    = $this->getServicos();
+        $servicosDb  = Servico::where('ativo', true)->orderBy('ordem')->get();
+        $servicos    = $servicosDb->isNotEmpty()
+            ? $servicosDb->map(fn($s) => ['icone' => $s->icone, 'titulo' => $s->titulo, 'descricao' => $s->descricao, 'preco' => $s->preco])->toArray()
+            : $this->getServicos();
         $depoimentos = $this->getDepoimentos();
         $galeria     = $this->getGaleria();
         $antesDepois = AntesDepois::where('ativo', true)

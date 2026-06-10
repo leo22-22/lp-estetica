@@ -13,8 +13,9 @@ until php artisan db:show 2>/dev/null || [ $COUNT -ge $MAX_TRIES ]; do
     sleep 2
 done
 
-echo "==> Rodando migrations..."
+echo "==> Rodando migrations e seed..."
 php artisan migrate --force
+php artisan db:seed --force
 
 echo "==> Otimizando..."
 php artisan optimize:clear
