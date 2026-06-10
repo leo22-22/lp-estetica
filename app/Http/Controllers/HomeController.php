@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AntesDepois;
 use App\Models\Contato;
+use App\Models\Galeria;
 use App\Models\Servico;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,11 @@ class HomeController extends Controller
         $servicos    = $servicosDb->isNotEmpty()
             ? $servicosDb->map(fn($s) => ['icone' => $s->icone, 'titulo' => $s->titulo, 'descricao' => $s->descricao, 'preco' => $s->preco])->toArray()
             : $this->getServicos();
-        $depoimentos = $this->getDepoimentos();
-        $galeria     = $this->getGaleria();
+        $depoimentos  = $this->getDepoimentos();
+        $galeriaDb    = Galeria::where('ativo', true)->orderBy('ordem')->orderBy('id')->get();
+        $galeria      = $galeriaDb->isNotEmpty()
+            ? $galeriaDb->map(fn($g) => ['titulo' => $g->titulo, 'categoria' => $g->categoria, 'imagem' => $g->imagem])->toArray()
+            : $this->getGaleria();
         $antesDepois = AntesDepois::where('ativo', true)
             ->orderBy('ordem')->orderBy('created_at', 'desc')
             ->get();

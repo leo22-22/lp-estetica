@@ -299,6 +299,9 @@
         <a href="{{ route('admin.servicos.index') }}" class="{{ request()->routeIs('admin.servicos.*') ? 'active' : '' }}">
             <i class="fas fa-concierge-bell"></i> Serviços
         </a>
+        <a href="{{ route('admin.galeria.index') }}" class="{{ request()->routeIs('admin.galeria.*') ? 'active' : '' }}">
+            <i class="fas fa-th"></i> Galeria
+        </a>
         <a href="{{ route('admin.antes-depois.index') }}" class="{{ request()->routeIs('admin.antes-depois.*') ? 'active' : '' }}">
             <i class="fas fa-images"></i> Antes/Depois
         </a>

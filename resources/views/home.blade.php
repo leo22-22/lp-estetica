@@ -157,11 +157,16 @@
 
         <div class="galeria-grid">
             @foreach($galeria as $i => $item)
+            @php $hasImg = !empty($item['imagem']); @endphp
             <div class="galeria-item" data-category="{{ $item['categoria'] }}" data-aos="zoom-in" data-aos-delay="{{ $i * 80 }}">
+                @if($hasImg)
+                    <img src="{{ Storage::url($item['imagem']) }}" alt="{{ $item['titulo'] }}" loading="lazy">
+                @else
                 <div class="galeria-placeholder">
                     <i class="fas fa-image"></i>
                     <span>{{ $item['titulo'] }}</span>
                 </div>
+                @endif
                 <div class="galeria-overlay">
                     <span>{{ $item['titulo'] }}</span>
                     <i class="fas fa-search-plus"></i>
@@ -189,31 +194,45 @@
             <p class="section-desc">Resultados reais de clientes que confiaram no nosso trabalho.</p>
         </div>
 
-        <div class="ad-grid">
-            @foreach($antesDepois as $i => $item)
-            <div class="ad-card" data-aos="fade-up" data-aos-delay="{{ ($i % 3) * 100 }}">
-                <div class="ad-label-row">
-                    <span class="ad-servico">{{ $item->servico }}</span>
-                    <span class="ad-titulo">{{ $item->titulo }}</span>
-                </div>
-                <div class="ad-images">
-                    <div class="ad-img-wrap">
-                        <span class="ad-badge ad-badge-antes">Antes</span>
-                        <img src="{{ Storage::url($item->foto_antes) }}"
-                             alt="Antes – {{ $item->titulo }}"
-                             loading="lazy">
+        <div class="ad-carousel-outer" data-aos="fade-up">
+            <button class="ad-arrow ad-arrow-prev" id="adPrev" aria-label="Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="ad-carousel-track-wrap">
+                <div class="ad-carousel-track" id="adTrack">
+                    @foreach($antesDepois as $item)
+                    <div class="ad-slide">
+                        <div class="ad-card">
+                            <div class="ad-label-row">
+                                <span class="ad-servico">{{ $item->servico }}</span>
+                                <span class="ad-titulo">{{ $item->titulo }}</span>
+                            </div>
+                            <div class="ad-images">
+                                <div class="ad-img-wrap">
+                                    <span class="ad-badge ad-badge-antes">Antes</span>
+                                    <img src="{{ Storage::url($item->foto_antes) }}"
+                                         alt="Antes – {{ $item->titulo }}" loading="lazy">
+                                </div>
+                                <div class="ad-divider"><i class="fas fa-arrow-right"></i></div>
+                                <div class="ad-img-wrap">
+                                    <span class="ad-badge ad-badge-depois">Depois</span>
+                                    <img src="{{ Storage::url($item->foto_depois) }}"
+                                         alt="Depois – {{ $item->titulo }}" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ad-divider"><i class="fas fa-arrow-right"></i></div>
-                    <div class="ad-img-wrap">
-                        <span class="ad-badge ad-badge-depois">Depois</span>
-                        <img src="{{ Storage::url($item->foto_depois) }}"
-                             alt="Depois – {{ $item->titulo }}"
-                             loading="lazy">
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            @endforeach
+
+            <button class="ad-arrow ad-arrow-next" id="adNext" aria-label="Próximo">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+
+        <div class="ad-dots" id="adDots"></div>
     </div>
 </section>
 @endif

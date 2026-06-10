@@ -163,6 +163,54 @@
     observer.observe(el);
   });
 
+  /* ---- Antes/Depois Carousel ---- */
+  const adTrack = document.getElementById('adTrack');
+  if (adTrack) {
+    const slides   = adTrack.querySelectorAll('.ad-slide');
+    const dotsWrap = document.getElementById('adDots');
+    const btnPrev  = document.getElementById('adPrev');
+    const btnNext  = document.getElementById('adNext');
+    let current    = 0;
+    let autoTimer;
+
+    function goTo(idx) {
+      current = (idx + slides.length) % slides.length;
+      adTrack.style.transform = `translateX(-${current * 100}%)`;
+      dotsWrap.querySelectorAll('.ad-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current)
+      );
+      btnPrev.disabled = slides.length <= 1;
+      btnNext.disabled = slides.length <= 1;
+    }
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'ad-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+      dotsWrap.appendChild(dot);
+    });
+
+    btnPrev?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    btnNext?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+    // Auto-play
+    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4500); }
+    function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+
+    if (slides.length > 1) startAuto();
+    goTo(0);
+
+    // Touch/swipe
+    let touchStartX = 0;
+    adTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    adTrack.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { dx < 0 ? goTo(current + 1) : goTo(current - 1); resetAuto(); }
+    }, { passive: true });
+  }
+
   /* ---- Auto-hide flash message ---- */
   const flash = document.getElementById('flash-msg');
   if (flash) {
