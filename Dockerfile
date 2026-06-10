@@ -12,10 +12,13 @@ RUN apk add --no-cache \
     unzip \
     git \
     libpng-dev \
+    libjpeg-turbo-dev \
     libxml2-dev \
     oniguruma-dev \
     postgresql-dev \
-    && docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd opcache
+    && docker-php-ext-configure gd --with-jpeg \
+    && docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd \
+    && docker-php-ext-enable opcache
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
