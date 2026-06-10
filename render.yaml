@@ -23,6 +23,8 @@ services:
         generateValue: true
       - key: APP_URL
         value: https://eduarda-cardoso-estetica.onrender.com
+      - key: ASSET_URL
+        value: https://eduarda-cardoso-estetica.onrender.com
 
       - key: DB_CONNECTION
         value: pgsql
