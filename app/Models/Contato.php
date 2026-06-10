@@ -15,5 +15,8 @@ class Contato extends Model
         'email',
         'servico',
         'mensagem',
+        'atendido',
     ];
+
+    protected $casts = ['atendido' => 'boolean'];
 }

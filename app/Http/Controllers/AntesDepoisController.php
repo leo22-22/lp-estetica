@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\AntesDepois;
+use App\Models\Servico;
 use Illuminate\Http\Request;
 
 class AntesDepoisController extends Controller
 {
     public function index()
     {
-        $items = AntesDepois::where('ativo', true)
+        $items    = AntesDepois::where('ativo', true)
             ->orderBy('ordem')
             ->orderBy('created_at', 'desc')
             ->get();
+        $servicos = Servico::where('ativo', true)->orderBy('ordem')->get();
 
-        return view('admin.antes-depois.index', compact('items'));
+        return view('admin.antes-depois.index', compact('items', 'servicos'));
     }
 
     public function store(Request $request)

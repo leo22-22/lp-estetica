@@ -46,8 +46,22 @@ class HomeController extends Controller
 
     public function listarContatos()
     {
-        $contatos = Contato::orderBy('created_at', 'desc')->paginate(20);
-        return view('admin.contatos', compact('contatos'));
+        $contatos  = Contato::orderBy('created_at', 'desc')->paginate(20);
+        $pendentes = Contato::where('atendido', false)->count();
+        $atendidos = Contato::where('atendido', true)->count();
+        return view('admin.contatos', compact('contatos', 'pendentes', 'atendidos'));
+    }
+
+    public function atenderContato(int $id)
+    {
+        Contato::findOrFail($id)->update(['atendido' => true]);
+        return redirect()->route('admin.contatos')->with('success', 'Contato marcado como atendido.');
+    }
+
+    public function destroyContato(int $id)
+    {
+        Contato::findOrFail($id)->delete();
+        return redirect()->route('admin.contatos')->with('success', 'Contato removido.');
     }
 
     private function getServicos(): array

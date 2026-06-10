@@ -11,6 +11,8 @@ Route::post('/contato', [HomeController::class, 'contato'])->name('contato');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', fn() => redirect()->route('admin.contatos'))->name('index');
     Route::get('/contatos', [HomeController::class, 'listarContatos'])->name('contatos');
+    Route::patch('/contatos/{id}/atender', [HomeController::class, 'atenderContato'])->name('contatos.atender');
+    Route::delete('/contatos/{id}', [HomeController::class, 'destroyContato'])->name('contatos.destroy');
     Route::get('/servicos', [ServicoController::class, 'index'])->name('servicos.index');
     Route::post('/servicos', [ServicoController::class, 'store'])->name('servicos.store');
     Route::put('/servicos/{servico}', [ServicoController::class, 'update'])->name('servicos.update');

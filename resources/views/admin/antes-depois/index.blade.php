@@ -12,12 +12,12 @@
 
         .admin-header {
             background: #8B4F6F; color: #fff;
-            padding: 1rem 2rem; display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
         }
-        .admin-header h1 { font-size: 1.2rem; }
-        .admin-header nav { margin-left: auto; display: flex; gap: 1rem; }
-        .admin-header a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .9rem; }
-        .admin-header a:hover { color: #fff; }
+        .admin-header h1 { font-size: 1.2rem; margin-right: auto; }
+        .admin-header nav { display: flex; gap: .5rem; flex-wrap: wrap; }
+        .admin-header a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .85rem; padding: .35rem .8rem; border-radius: 20px; border: 1px solid rgba(255,255,255,.3); transition: .2s; }
+        .admin-header a:hover, .admin-header a.active { background: rgba(255,255,255,.2); color: #fff; }
 
         .content { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
@@ -114,10 +114,12 @@
 <body>
 <header class="admin-header">
     <i class="fas fa-spa"></i>
-    <h1>Antes e Depois</h1>
+    <h1>Painel Admin</h1>
     <nav>
-        <a href="{{ route('admin.contatos') }}"><i class="fas fa-inbox"></i> Contatos</a>
-        <a href="{{ route('home') }}"><i class="fas fa-eye"></i> Ver site</a>
+        <a href="{{ route('admin.contatos') }}"><i class="fas fa-envelope"></i> Contatos</a>
+        <a href="{{ route('admin.servicos.index') }}"><i class="fas fa-concierge-bell"></i> Serviços</a>
+        <a href="{{ route('admin.antes-depois.index') }}" class="active"><i class="fas fa-images"></i> Antes/Depois</a>
+        <a href="{{ route('home') }}"><i class="fas fa-arrow-left"></i> Ver Site</a>
     </nav>
 </header>
 
@@ -142,12 +144,9 @@
                     <label>Serviço</label>
                     <select name="servico" required>
                         <option value="" disabled selected>Selecione</option>
-                        <option>Limpeza de Pele</option>
-                        <option>Micropigmentação</option>
-                        <option>Massagem Relaxante</option>
-                        <option>Peeling Facial</option>
-                        <option>Radiofrequência</option>
-                        <option>Drenagem Linfática</option>
+                        @foreach($servicos as $s)
+                        <option>{{ $s->titulo }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group full">
