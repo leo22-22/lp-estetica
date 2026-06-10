@@ -11,17 +11,12 @@ RUN apk add --no-cache \
     zip \
     unzip \
     git \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
     libxml2-dev \
     oniguruma-dev \
     libpq-dev
 
-# Extensões PHP
-RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
-    && docker-php-ext-install pdo_mysql pdo_pgsql mbstring pcntl bcmath gd \
-    && docker-php-ext-enable opcache
+# Extensões PHP (apenas as necessárias em produção)
+RUN docker-php-ext-install pdo_pgsql mbstring pcntl bcmath
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
