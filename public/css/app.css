@@ -584,14 +584,11 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
    ============================================================ */
 /* Carrossel wrapper */
 .ad-carousel-outer {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
   position: relative;
 }
 
 .ad-carousel-track-wrap {
-  flex: 1;
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius);
 }
@@ -605,7 +602,6 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
 .ad-slide {
   flex: 0 0 100%;
   min-width: 0;
-  padding: 0 .25rem;
 }
 
 .ad-card {
@@ -697,22 +693,26 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
   z-index: 2;
 }
 
-/* Arrows */
+/* Arrows — absolute over the track */
 .ad-arrow {
-  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 44px; height: 44px;
   border-radius: 50%;
-  border: 2px solid var(--primary-lt);
-  background: var(--white);
+  border: none;
+  background: rgba(255,255,255,.92);
   color: var(--primary);
   font-size: 1rem;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition), color var(--transition);
-  box-shadow: var(--shadow);
-  z-index: 2;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
+  z-index: 10;
 }
-.ad-arrow:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.ad-arrow-prev { left: .75rem; }
+.ad-arrow-next { right: .75rem; }
+.ad-arrow:hover { background: var(--primary); color: #fff; transform: translateY(-50%) scale(1.08); }
 .ad-arrow:disabled { opacity: .35; pointer-events: none; }
 
 /* Dots */
@@ -720,7 +720,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
   display: flex;
   justify-content: center;
   gap: .5rem;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
 }
 .ad-dot {
   width: 10px; height: 10px;
@@ -734,9 +734,10 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
 .ad-dot.active { background: var(--primary); transform: scale(1.3); }
 
 @media (max-width: 640px) {
-  .ad-arrow { width: 36px; height: 36px; font-size: .85rem; }
+  .ad-arrow { width: 34px; height: 34px; font-size: .8rem; }
+  .ad-arrow-prev { left: .4rem; }
+  .ad-arrow-next { right: .4rem; }
   .ad-img-wrap img { height: 180px; }
-  .ad-carousel-outer { gap: .4rem; }
 }
 
 /* ============================================================

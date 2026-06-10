@@ -6,6 +6,7 @@
     <title>@yield('title', 'Admin') – Eduarda Cardoso Estética</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -353,6 +354,117 @@
         overlay.classList.remove('open');
     });
 </script>
+{{-- Cropper.js --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+
+{{-- Global crop modal --}}
+<div class="modal-bg" id="cropModal" style="z-index:1100">
+    <div class="modal" style="max-width:700px">
+        <div class="modal-head">
+            <span><i class="fas fa-crop-alt"></i> Recortar Imagem</span>
+            <button class="modal-close" id="cropCancel"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body" style="padding:1rem">
+            <div style="max-height:420px;overflow:hidden;background:#111;border-radius:8px">
+                <img id="cropImage" src="" alt="" style="max-width:100%;display:block">
+            </div>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem">
+                <button type="button" class="btn-sm btn-edit" onclick="cropSetRatio(16/9)">16:9</button>
+                <button type="button" class="btn-sm btn-edit" onclick="cropSetRatio(4/3)">4:3</button>
+                <button type="button" class="btn-sm btn-edit" onclick="cropSetRatio(1)">1:1</button>
+                <button type="button" class="btn-sm btn-edit" onclick="cropSetRatio(NaN)">Livre</button>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button type="button" class="btn-cancel" id="cropCancel2">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="cropConfirm">
+                <i class="fas fa-check"></i> Confirmar Recorte
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    let cropper      = null;
+    let targetInput  = null;
+    let targetPreview= null;
+
+    window.initCropInput = function (inputEl, previewEl, ratio) {
+        inputEl.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+            targetInput   = inputEl;
+            targetPreview = previewEl;
+
+            const reader = new FileReader();
+            reader.onload = e => {
+                const img = document.getElementById('cropImage');
+                img.src = e.target.result;
+
+                if (cropper) { cropper.destroy(); cropper = null; }
+                document.getElementById('cropModal').classList.add('open');
+
+                setTimeout(() => {
+                    cropper = new Cropper(img, {
+                        aspectRatio: ratio ?? NaN,
+                        viewMode: 1,
+                        autoCropArea: 1,
+                        movable: true,
+                        zoomable: true,
+                        scalable: false,
+                        rotatable: false,
+                        background: false,
+                    });
+                }, 80);
+            };
+            reader.readAsDataURL(file);
+            // reset so same file can be re-selected after cancel
+            this.value = '';
+        });
+    };
+
+    function cropSetRatio(r) {
+        if (cropper) cropper.setAspectRatio(isNaN(r) ? NaN : r);
+    }
+    window.cropSetRatio = cropSetRatio;
+
+    function closeCropModal() {
+        document.getElementById('cropModal').classList.remove('open');
+        if (cropper) { cropper.destroy(); cropper = null; }
+        targetInput = null; targetPreview = null;
+    }
+
+    document.getElementById('cropCancel')?.addEventListener('click',  closeCropModal);
+    document.getElementById('cropCancel2')?.addEventListener('click', closeCropModal);
+
+    document.getElementById('cropConfirm')?.addEventListener('click', function () {
+        if (!cropper || !targetInput) return;
+
+        cropper.getCroppedCanvas({ maxWidth: 1600, maxHeight: 1200 }).toBlob(blob => {
+            const origName = targetInput.dataset.filename || 'imagem.jpg';
+            const file = new File([blob], origName, { type: 'image/jpeg' });
+            const dt   = new DataTransfer();
+            dt.items.add(file);
+            targetInput.files = dt.files;
+
+            if (targetPreview) {
+                targetPreview.src = URL.createObjectURL(blob);
+                targetPreview.style.display = 'block';
+                const area = targetPreview.closest('.file-area, .upload-area');
+                if (area) {
+                    area.classList.add('has-file');
+                    area.querySelector?.('i') && (area.querySelector('i').style.display = 'none');
+                    area.querySelector?.('span') && (area.querySelector('span').style.display = 'none');
+                }
+            }
+
+            closeCropModal();
+        }, 'image/jpeg', .92);
+    });
+})();
+</script>
+
 @stack('scripts')
 </body>
 </html>

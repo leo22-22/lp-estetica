@@ -195,11 +195,7 @@
         </div>
 
         <div class="ad-carousel-outer" data-aos="fade-up">
-            <button class="ad-arrow ad-arrow-prev" id="adPrev" aria-label="Anterior">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-
-            <div class="ad-carousel-track-wrap">
+            <div class="ad-carousel-track-wrap" id="adTrackWrap">
                 <div class="ad-carousel-track" id="adTrack">
                     @foreach($antesDepois as $item)
                     <div class="ad-slide">
@@ -225,14 +221,15 @@
                     </div>
                     @endforeach
                 </div>
+                <button class="ad-arrow ad-arrow-prev" id="adPrev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="ad-arrow ad-arrow-next" id="adNext" aria-label="Próximo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-
-            <button class="ad-arrow ad-arrow-next" id="adNext" aria-label="Próximo">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            <div class="ad-dots" id="adDots"></div>
         </div>
-
-        <div class="ad-dots" id="adDots"></div>
     </div>
 </section>
 @endif
@@ -433,6 +430,7 @@
             <i class="fas fa-times"></i>
         </button>
         <div class="lightbox-preview">
+            <img id="lb-img" src="" alt="" style="display:none;width:100%;max-height:70vh;object-fit:contain;border-radius:8px">
             <i id="lb-icon" class="fas fa-image"></i>
         </div>
         <div class="lightbox-caption">

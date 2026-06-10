@@ -71,8 +71,8 @@
                     Foto (recomendado: 800×600px, máx. 5MB, JPG/PNG/WebP)
                 </label>
                 <div class="upload-area" id="upload-area">
-                    <input type="file" name="imagem" accept="image/*" required
-                           onchange="previewImg(this)">
+                    <input type="file" name="imagem" id="galeria-input" accept="image/*" required
+                           data-filename="galeria.jpg">
                     <i class="fas fa-image"></i>
                     <span>Clique para selecionar a foto</span>
                     <img id="preview-img" class="preview-img" alt="">
@@ -181,21 +181,12 @@
 
 @push('scripts')
 <script>
-function previewImg(input) {
-    const file = input.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-        const preview = document.getElementById('preview-img');
-        const area    = document.getElementById('upload-area');
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-        area.classList.add('has-file');
-        area.querySelector('i').style.display    = 'none';
-        area.querySelector('span').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-}
+// ratio 4:3 para fotos de galeria
+initCropInput(
+    document.getElementById('galeria-input'),
+    document.getElementById('preview-img'),
+    4/3
+);
 
 function openEdit(id, titulo, categoria, ordem, ativo) {
     document.getElementById('editForm').action     = '/admin/galeria/' + id;

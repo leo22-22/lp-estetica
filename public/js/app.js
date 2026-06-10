@@ -73,14 +73,28 @@
   const lbTitle     = document.getElementById('lb-title');
   const lbCategory  = document.getElementById('lb-category');
   const lbIcon      = document.getElementById('lb-icon');
+  const lbImg       = document.getElementById('lb-img');
 
   function openLightbox(item) {
-    const title    = item.querySelector('.galeria-placeholder span')?.textContent.trim() || '';
+    const realImg  = item.querySelector('img');
+    const title    = realImg?.alt || item.querySelector('.galeria-placeholder span')?.textContent.trim() || '';
     const category = item.dataset.category || '';
     const iconEl   = item.querySelector('.galeria-placeholder i');
+
     lbTitle.textContent    = title;
     lbCategory.textContent = category.charAt(0).toUpperCase() + category.slice(1).replace(/-/g, ' ');
-    lbIcon.className       = iconEl ? iconEl.className : 'fas fa-image';
+
+    if (realImg) {
+      lbImg.src           = realImg.src;
+      lbImg.alt           = realImg.alt;
+      lbImg.style.display = 'block';
+      lbIcon.style.display= 'none';
+    } else {
+      lbImg.style.display = 'none';
+      lbIcon.style.display= '';
+      lbIcon.className    = iconEl ? iconEl.className : 'fas fa-image';
+    }
+
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -88,6 +102,8 @@
   function closeLightbox() {
     lightbox?.classList.remove('open');
     document.body.style.overflow = '';
+    if (lbImg) { lbImg.src = ''; lbImg.style.display = 'none'; }
+    if (lbIcon) lbIcon.style.display = '';
   }
 
   galeriaItems.forEach(item => item.addEventListener('click', () => openLightbox(item)));

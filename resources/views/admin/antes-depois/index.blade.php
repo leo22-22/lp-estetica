@@ -75,8 +75,8 @@
             <div class="upload-grid" style="margin-bottom:1rem">
                 <div>
                     <div class="file-area" id="area-antes">
-                        <input type="file" name="foto_antes" accept="image/*" required
-                               onchange="previewImg(this,'preview-antes','area-antes')">
+                        <input type="file" name="foto_antes" id="input-antes" accept="image/*" required
+                               data-filename="antes.jpg">
                         <i class="fas fa-camera"></i>
                         <span>Foto <strong>ANTES</strong><br>Clique para selecionar</span>
                         <img id="preview-antes" class="preview-img" alt="">
@@ -85,8 +85,8 @@
                 </div>
                 <div>
                     <div class="file-area" id="area-depois">
-                        <input type="file" name="foto_depois" accept="image/*" required
-                               onchange="previewImg(this,'preview-depois','area-depois')">
+                        <input type="file" name="foto_depois" id="input-depois" accept="image/*" required
+                               data-filename="depois.jpg">
                         <i class="fas fa-magic"></i>
                         <span>Foto <strong>DEPOIS</strong><br>Clique para selecionar</span>
                         <img id="preview-depois" class="preview-img" alt="">
@@ -149,20 +149,8 @@
 
 @push('scripts')
 <script>
-function previewImg(input, previewId, areaId) {
-    const file = input.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-        const preview = document.getElementById(previewId);
-        const area    = document.getElementById(areaId);
-        preview.src = e.target.result;
-        preview.style.display = 'block';
-        area.classList.add('has-file');
-        area.querySelector('i').style.display  = 'none';
-        area.querySelector('span').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-}
+// ratio 4:3 — mesmo aspecto das fotos do site
+initCropInput(document.getElementById('input-antes'),  document.getElementById('preview-antes'),  4/3);
+initCropInput(document.getElementById('input-depois'), document.getElementById('preview-depois'), 4/3);
 </script>
 @endpush
