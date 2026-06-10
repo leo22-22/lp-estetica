@@ -1,0 +1,53 @@
+services:
+  laravel.test:
+    build:
+      context: ./vendor/laravel/sail/runtimes/8.5
+      dockerfile: Dockerfile
+      args:
+        WWWGROUP: '${WWWGROUP:-1000}'
+    container_name: estetica_laravel
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    restart: unless-stopped
+    ports:
+      - '${APP_PORT:-80}:80'
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    environment:
+      WWWUSER: '${WWWUSER:-1000}'
+      LARAVEL_SAIL: 1
+    networks:
+      - estetica_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:8.0
+    container_name: estetica_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: '${DB_DATABASE:-lp_estetica}'
+      MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASSWORD:-root123}'
+      MYSQL_USER: '${DB_USERNAME:-estetica}'
+      MYSQL_PASSWORD: '${DB_PASSWORD:-estetica123}'
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - estetica_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot123"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+networks:
+  estetica_network:
+    driver: bridge
+
+volumes:
+  mysql_data:

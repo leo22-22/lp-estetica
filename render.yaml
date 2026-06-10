@@ -1,0 +1,62 @@
+databases:
+  - name: lp-estetica-db
+    plan: free
+    region: ohio
+    databaseName: lp_estetica
+    user: estetica
+
+services:
+  - type: web
+    name: lp-estetica
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: ohio
+    envVars:
+      - key: APP_NAME
+        value: "Eduarda Cardoso Estética"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        value: https://lp-estetica.onrender.com
+
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: lp-estetica-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: lp-estetica-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: lp-estetica-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: lp-estetica-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: lp-estetica-db
+          property: password
+
+      - key: SESSION_DRIVER
+        value: cookie
+      - key: CACHE_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: FILESYSTEM_DISK
+        value: local
+
+      - key: WHATSAPP_NUMBER
+        value: "5511999999999"
