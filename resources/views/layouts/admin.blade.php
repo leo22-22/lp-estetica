@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>@yield('title', 'Admin') – Eduarda Cardoso Estética</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -31,6 +31,8 @@
             top: 0; left: 0; bottom: 0;
             z-index: 200;
             transition: transform .25s ease;
+            padding-top: env(safe-area-inset-top, 0);
+            padding-left: env(safe-area-inset-left, 0);
         }
         .sidebar-logo {
             padding: 1.4rem 1.5rem 1rem;
@@ -54,6 +56,7 @@
             flex: 1;
             padding: 1.2rem 0;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .nav-label {
             font-size: .68rem;
@@ -238,8 +241,8 @@
         .form-group textarea,
         .form-group select {
             padding: .65rem .9rem; border: 2px solid #f0dde5; border-radius: 8px;
-            font-family: inherit; font-size: .9rem; color: #333; transition: .2s;
-            background: #fdfafa;
+            font-family: inherit; font-size: 1rem; color: #333; transition: .2s;
+            background: #fdfafa; -webkit-appearance: none;
         }
         .form-group input:focus,
         .form-group textarea:focus,
