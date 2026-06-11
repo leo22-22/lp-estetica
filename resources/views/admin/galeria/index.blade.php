@@ -26,8 +26,9 @@
     .photo-item-info { padding: .5rem .75rem .6rem; }
     .photo-item-title { font-size: .85rem; font-weight: 700; color: #2c1820; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .photo-item-cat { font-size: .75rem; color: #888; margin-top: .1rem; }
-    .photo-item-footer { padding: .4rem .75rem .6rem; display: flex; align-items: center; justify-content: space-between; }
-    .cat-badge { font-size: .7rem; background: #f2d1d8; color: #6b2040; padding: .15rem .5rem; border-radius: 20px; }
+    .photo-item-footer { padding: .4rem .75rem .6rem; display: flex; align-items: center; justify-content: space-between; gap: .3rem; }
+    .cat-badge { font-size: .7rem; background: #f2d1d8; color: #6b2040; padding: .15rem .5rem; border-radius: 20px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 1; }
+    .photo-item-footer .actions { flex-shrink: 0; display: flex; gap: .3rem; }
     .inactive-overlay { position: absolute; top: .5rem; left: .5rem; background: rgba(0,0,0,.55); color: #fff; font-size: .7rem; font-weight: 700; padding: .2rem .5rem; border-radius: 4px; }
 
     @media (max-width: 640px) {
@@ -111,7 +112,7 @@
                 </div>
                 <div class="photo-item-footer">
                     <span class="cat-badge">{{ $item->categoria }}</span>
-                    <div style="display:flex;gap:.3rem">
+                    <div class="actions">
                         <button class="btn-sm btn-edit"
                             onclick="openEdit({{ $item->id }}, {{ json_encode($item->titulo) }}, '{{ $item->categoria }}', {{ $item->ordem }}, {{ $item->ativo ? 'true' : 'false' }})">
                             <i class="fas fa-pen"></i>
