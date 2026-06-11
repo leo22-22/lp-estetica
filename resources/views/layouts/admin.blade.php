@@ -335,6 +335,13 @@
     @if(session('error'))
     <div class="flash flash-error"><i class="fas fa-exclamation-circle"></i> {{ session('error') }}</div>
     @endif
+    @if($errors->any())
+    <div class="flash flash-error" style="flex-direction:column;align-items:flex-start;gap:.2rem">
+        @foreach($errors->all() as $e)
+        <span><i class="fas fa-exclamation-circle"></i> {{ $e }}</span>
+        @endforeach
+    </div>
+    @endif
 
     @yield('content')
 

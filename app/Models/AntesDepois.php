@@ -16,4 +16,9 @@ class AntesDepois extends Model
         'ativo',
         'ordem',
     ];
+
+    protected $casts = [
+        'ativo' => 'boolean',
+        'ordem' => 'integer',
+    ];
 }

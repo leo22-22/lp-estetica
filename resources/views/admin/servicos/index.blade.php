@@ -125,7 +125,7 @@
                     <td>
                         <div style="display:flex;gap:.4rem;flex-wrap:wrap">
                             <button class="btn-sm btn-edit"
-                                onclick="openEdit({{ $s->id }}, '{{ addslashes($s->icone) }}', '{{ addslashes($s->titulo) }}', '{{ addslashes($s->descricao) }}', '{{ addslashes($s->preco ?? '') }}', {{ $s->ordem }}, {{ $s->ativo ? 'true' : 'false' }})">
+                                onclick="openEdit({{ $s->id }}, {{ json_encode($s->icone) }}, {{ json_encode($s->titulo) }}, {{ json_encode($s->descricao) }}, {{ json_encode($s->preco ?? '') }}, {{ $s->ordem }}, {{ $s->ativo ? 'true' : 'false' }})">
                                 <i class="fas fa-pen"></i> Editar
                             </button>
                             <form method="POST" action="{{ route('admin.servicos.destroy', $s->id) }}"

@@ -50,7 +50,7 @@ services:
           property: password
 
       - key: SESSION_DRIVER
-        value: cookie
+        value: database
       - key: CACHE_DRIVER
         value: file
       - key: QUEUE_CONNECTION

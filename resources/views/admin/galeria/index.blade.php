@@ -113,7 +113,7 @@
                     <span class="cat-badge">{{ $item->categoria }}</span>
                     <div style="display:flex;gap:.3rem">
                         <button class="btn-sm btn-edit"
-                            onclick="openEdit({{ $item->id }}, '{{ addslashes($item->titulo) }}', '{{ $item->categoria }}', {{ $item->ordem }}, {{ $item->ativo ? 'true' : 'false' }})">
+                            onclick="openEdit({{ $item->id }}, {{ json_encode($item->titulo) }}, '{{ $item->categoria }}', {{ $item->ordem }}, {{ $item->ativo ? 'true' : 'false' }})">
                             <i class="fas fa-pen"></i>
                         </button>
                         <form method="POST" action="{{ route('admin.galeria.destroy', $item) }}"

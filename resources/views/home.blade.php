@@ -153,6 +153,8 @@
             <button class="filter-btn" data-filter="limpeza">Limpeza de Pele</button>
             <button class="filter-btn" data-filter="facial">Facial</button>
             <button class="filter-btn" data-filter="massagem">Massagem</button>
+            <button class="filter-btn" data-filter="radiofrequencia">Radiofrequência</button>
+            <button class="filter-btn" data-filter="outros">Outros</button>
         </div>
 
         <div class="galeria-grid">
@@ -394,13 +396,10 @@
                         <label for="servico">Serviço de interesse *</label>
                         <select id="servico" name="servico" required>
                             <option value="" disabled selected>Selecione o serviço</option>
-                            <option value="Limpeza de Pele" {{ old('servico') == 'Limpeza de Pele' ? 'selected' : '' }}>Limpeza de Pele</option>
-                            <option value="Micropigmentação" {{ old('servico') == 'Micropigmentação' ? 'selected' : '' }}>Micropigmentação</option>
-                            <option value="Massagem Relaxante" {{ old('servico') == 'Massagem Relaxante' ? 'selected' : '' }}>Massagem Relaxante</option>
-                            <option value="Peeling Facial" {{ old('servico') == 'Peeling Facial' ? 'selected' : '' }}>Peeling Facial</option>
-                            <option value="Radiofrequência" {{ old('servico') == 'Radiofrequência' ? 'selected' : '' }}>Radiofrequência</option>
-                            <option value="Drenagem Linfática" {{ old('servico') == 'Drenagem Linfática' ? 'selected' : '' }}>Drenagem Linfática</option>
-                            <option value="Outro" {{ old('servico') == 'Outro' ? 'selected' : '' }}>Outro</option>
+                            @foreach($servicos as $s)
+                                @php $titulo = is_array($s) ? $s['titulo'] : $s->titulo; @endphp
+                                <option value="{{ $titulo }}" {{ old('servico') == $titulo ? 'selected' : '' }}>{{ $titulo }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -430,7 +429,7 @@
             <i class="fas fa-times"></i>
         </button>
         <div class="lightbox-preview">
-            <img id="lb-img" src="" alt="" style="display:none;width:100%;max-height:70vh;object-fit:contain;border-radius:8px">
+            <img id="lb-img" src="" alt="" style="display:none">
             <i id="lb-icon" class="fas fa-image"></i>
         </div>
         <div class="lightbox-caption">
