@@ -61,15 +61,9 @@
         <div class="sobre-grid">
             <div class="sobre-image" data-aos="fade-right">
                 <div class="sobre-img-frame">
-                    @if(config('business.photo_url'))
-                        <img src="{{ config('business.photo_url') }}" alt="Eduarda Cardoso"
-                             style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:var(--radius)">
-                    @else
-                    <div class="sobre-img-placeholder">
-                        <i class="fas fa-user-circle"></i>
-                        <span>Foto da Profissional</span>
-                    </div>
-                    @endif
+                    @php $photoUrl = config('business.photo_url') ?: asset('img/profissional.png'); @endphp
+                    <img src="{{ $photoUrl }}" alt="Eduarda Cardoso"
+                         style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:var(--radius)">
                     <div class="sobre-img-badge">
                         <i class="fas fa-certificate"></i>
                         <span>Profissional Certificada</span>
