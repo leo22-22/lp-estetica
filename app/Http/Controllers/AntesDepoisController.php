@@ -32,6 +32,10 @@ class AntesDepoisController extends Controller
         $antes  = $request->file('foto_antes')->store('antes-depois', 'public');
         $depois = $request->file('foto_depois')->store('antes-depois', 'public');
 
+        if ($antes === false || $depois === false) {
+            return back()->withErrors(['foto_antes' => 'Falha ao salvar imagem. Verifique as permissões de storage.'])->withInput();
+        }
+
         AntesDepois::create([
             'titulo'      => $validated['titulo'],
             'servico'     => $validated['servico'],

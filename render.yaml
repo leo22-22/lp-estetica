@@ -62,3 +62,8 @@ services:
 
       - key: WHATSAPP_NUMBER
         value: "5511999999999"
+
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true

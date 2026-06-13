@@ -302,7 +302,7 @@
         <div class="cta-content" data-aos="zoom-in">
             <h2>Pronta para se sentir <em>incrível</em>?</h2>
             <p>Agende sua consulta hoje e descubra o tratamento perfeito para você.</p>
-            <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '5511999999999') }}?text=Olá! Gostaria de agendar um horário."
+            <a href="https://wa.me/{{ config('business.whatsapp') }}?text=Olá! Gostaria de agendar um horário."
                class="btn btn-white" target="_blank" rel="noopener">
                 <i class="fab fa-whatsapp"></i> Falar no WhatsApp
             </a>
@@ -327,7 +327,7 @@
                         <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
                         <div>
                             <h4>WhatsApp</h4>
-                            <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '5511999999999') }}" target="_blank">(11) 9 9999-9999</a>
+                            <a href="https://wa.me/{{ config('business.whatsapp') }}" target="_blank">{{ config('business.phone_display') }}</a>
                         </div>
                     </div>
                     <div class="info-item">
@@ -354,7 +354,7 @@
                     </div>
                 </div>
 
-                <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '5511999999999') }}?text=Olá! Gostaria de agendar um horário."
+                <a href="https://wa.me/{{ config('business.whatsapp') }}?text=Olá! Gostaria de agendar um horário."
                    class="btn btn-whatsapp" target="_blank" rel="noopener">
                     <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
                 </a>
@@ -362,7 +362,10 @@
 
             <!-- Form -->
             <div class="contato-form-wrapper" data-aos="fade-left">
-                <form class="contato-form" id="contato-form" data-wpp="{{ env('WHATSAPP_NUMBER', '5511999999999') }}" novalidate>
+                <form class="contato-form" id="contato-form"
+                      action="{{ route('contato') }}" method="POST"
+                      data-wpp="{{ config('business.whatsapp') }}" novalidate>
+                    @csrf
                     <h3>Solicitar Agendamento</h3>
 
                     @if($errors->any())

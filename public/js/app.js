@@ -111,7 +111,7 @@
   lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-  /* ---- Contact form → WhatsApp ---- */
+  /* ---- Contact form → WhatsApp + salva no servidor ---- */
   const contatoForm = document.getElementById('contato-form');
   contatoForm?.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -126,6 +126,7 @@
       return;
     }
 
+    // 1. Abre WhatsApp de forma síncrona (antes de qualquer await) para não ser bloqueado por popup blockers
     const wpp   = (this.dataset.wpp || '5511999999999').replace(/\D/g, '');
     const lines = ['Olá! Gostaria de agendar um horário.', ''];
     lines.push(`*Nome:* ${nome}`);
@@ -133,8 +134,15 @@
     if (email)    lines.push(`*E-mail:* ${email}`);
     lines.push(`*Serviço:* ${servico}`);
     if (mensagem) lines.push(`*Mensagem:* ${mensagem}`);
-
     window.open(`https://wa.me/${wpp}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+
+    // 2. Salva no banco em background (sem bloquear a UX)
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    }).catch(() => {});
+
     contatoForm.reset();
   });
 

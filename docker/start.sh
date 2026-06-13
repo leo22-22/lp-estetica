@@ -18,10 +18,9 @@ php artisan migrate --force
 php artisan db:seed --force
 
 echo "==> Criando symlink de storage..."
-php artisan storage:link --force 2>/dev/null || true
+php artisan storage:link --force || echo "AVISO: storage:link falhou — imagens podem não ser acessíveis via URL"
 
 echo "==> Otimizando..."
-php artisan optimize:clear
 php artisan optimize
 
 echo "==> Ajustando permissões..."

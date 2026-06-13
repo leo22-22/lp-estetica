@@ -24,6 +24,10 @@ class GaleriaController extends Controller
 
         $path = $request->file('imagem')->store('galeria', 'public');
 
+        if ($path === false) {
+            return back()->withErrors(['imagem' => 'Falha ao salvar a imagem. Verifique as permissões de storage.'])->withInput();
+        }
+
         Galeria::create([
             'titulo'    => $request->titulo,
             'categoria' => $request->categoria,

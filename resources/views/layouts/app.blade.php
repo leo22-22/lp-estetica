@@ -58,7 +58,7 @@
       "url": "{{ config('app.url') }}",
       "logo": "{{ asset('favicon.svg') }}",
       "image": "{{ asset('images/og-cover.jpg') }}",
-      "telephone": "+55{{ env('WHATSAPP_NUMBER', '11999999999') }}",
+      "telephone": "+55{{ config('business.whatsapp') }}",
       "sameAs": [
         "https://www.instagram.com/eduardacardoso.estetica"
       ],
@@ -139,7 +139,7 @@
                     <a href="https://www.instagram.com/eduardacardoso.estetica" target="_blank" rel="noopener" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '5511999999999') }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <a href="https://wa.me/{{ config('business.whatsapp') }}" target="_blank" rel="noopener" aria-label="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -172,7 +172,7 @@
                 <h4>Contato</h4>
                 <div class="footer-contact-item">
                     <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '5511999999999') }}" target="_blank">(11) 9 9999-9999</a>
+                    <a href="https://wa.me/{{ config('business.whatsapp') }}" target="_blank">{{ config('business.phone_display') }}</a>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fab fa-instagram"></i>
@@ -191,7 +191,7 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '5511999999999') }}?text=Olá! Gostaria de agendar um horário."
+    <a href="https://wa.me/{{ config('business.whatsapp') }}?text=Olá! Gostaria de agendar um horário."
        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
