@@ -187,6 +187,66 @@
     observer.observe(el);
   });
 
+  /* ---- Before/After Comparison Sliders ---- */
+  document.querySelectorAll('.ad-compare').forEach(function(el) {
+    const antes  = el.querySelector('.ad-compare-antes');
+    const handle = el.querySelector('.ad-compare-handle');
+    let active = false;
+
+    function move(clientX) {
+      const r   = el.getBoundingClientRect();
+      const pct = Math.max(3, Math.min(97, (clientX - r.left) / r.width * 100));
+      handle.style.left    = pct + '%';
+      antes.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    }
+
+    el.addEventListener('mousedown', function(e) { active = true; move(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', function(e) { if (active) move(e.clientX); });
+    window.addEventListener('mouseup',   function()  { active = false; });
+
+    // stopPropagation so carousel swipe doesn't also fire
+    el.addEventListener('touchstart', function(e) {
+      active = true;
+      move(e.touches[0].clientX);
+      e.stopPropagation();
+    }, { passive: true });
+    el.addEventListener('touchmove', function(e) {
+      if (active) { move(e.touches[0].clientX); e.preventDefault(); }
+    }, { passive: false });
+    el.addEventListener('touchend', function(e) {
+      active = false;
+      e.stopPropagation();
+    }, { passive: true });
+
+    // Hint: gently animate the handle when section first enters view
+    var hinted = false;
+    var hintObs = new IntersectionObserver(function(entries) {
+      if (!entries[0].isIntersecting || hinted) return;
+      hinted = true;
+      hintObs.disconnect();
+      var p = 50, si = 0, targets = [32, 68, 50];
+      setTimeout(function runStep() {
+        if (active) return;
+        var id = setInterval(function() {
+          if (active) { clearInterval(id); return; }
+          var d = targets[si] - p;
+          if (Math.abs(d) < 0.6) {
+            clearInterval(id);
+            p = targets[si++];
+            handle.style.left    = p + '%';
+            antes.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+            if (si < targets.length) setTimeout(runStep, 90);
+          } else {
+            p += d * 0.1;
+            handle.style.left    = p + '%';
+            antes.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+          }
+        }, 16);
+      }, 950);
+    }, { threshold: 0.5 });
+    hintObs.observe(el);
+  });
+
   /* ---- Antes/Depois Carousel ---- */
   const adTrack = document.getElementById('adTrack');
   if (adTrack) {
@@ -207,7 +267,6 @@
       btnNext.disabled = slides.length <= 1;
     }
 
-    // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'ad-dot' + (i === 0 ? ' active' : '');
@@ -219,18 +278,26 @@
     btnPrev?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
     btnNext?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
 
-    // Auto-play
-    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 4500); }
+    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5500); }
     function resetAuto()  { clearInterval(autoTimer); startAuto(); }
 
     if (slides.length > 1) startAuto();
     goTo(0);
 
-    // Touch/swipe
-    let touchStartX = 0;
-    adTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-    adTrack.addEventListener('touchend',   e => {
+    // Pause auto while hovering the section (user is interacting with slider)
+    const adSection = document.querySelector('.antes-depois');
+    adSection?.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    adSection?.addEventListener('mouseleave', () => { if (slides.length > 1) startAuto(); });
+
+    // Swipe — only if touch didn't start on a compare element
+    let touchStartX = null;
+    adTrack.addEventListener('touchstart', e => {
+      if (!e.target.closest('.ad-compare')) touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    adTrack.addEventListener('touchend', e => {
+      if (touchStartX === null) return;
       const dx = e.changedTouches[0].clientX - touchStartX;
+      touchStartX = null;
       if (Math.abs(dx) > 50) { dx < 0 ? goTo(current + 1) : goTo(current - 1); resetAuto(); }
     }, { passive: true });
   }

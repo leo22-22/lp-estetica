@@ -211,26 +211,29 @@
                 <div class="ad-carousel-track" id="adTrack">
                     @foreach($antesDepois as $item)
                     @php
-                        $antesSrc = str_starts_with($item->foto_antes, 'http') ? $item->foto_antes : \Storage::url($item->foto_antes);
+                        $antesSrc  = str_starts_with($item->foto_antes,  'http') ? $item->foto_antes  : \Storage::url($item->foto_antes);
                         $depoisSrc = str_starts_with($item->foto_depois, 'http') ? $item->foto_depois : \Storage::url($item->foto_depois);
                     @endphp
                     <div class="ad-slide">
                         <div class="ad-card">
-                            <div class="ad-label-row">
-                                <span class="ad-servico">{{ $item->servico }}</span>
-                                <span class="ad-titulo">{{ $item->titulo }}</span>
-                            </div>
-                            <div class="ad-images">
-                                <div class="ad-img-wrap">
-                                    <span class="ad-badge ad-badge-antes">Antes</span>
-                                    <img src="{{ $antesSrc }}"
-                                         alt="Antes – {{ $item->titulo }}" loading="lazy">
+                            <div class="ad-compare">
+                                {{-- Depois fica abaixo, Antes por cima com clip-path --}}
+                                <div class="ad-compare-layer ad-compare-depois">
+                                    <img src="{{ $depoisSrc }}" alt="Depois – {{ $item->titulo }}" loading="lazy">
                                 </div>
-                                <div class="ad-divider"><i class="fas fa-arrow-right"></i></div>
-                                <div class="ad-img-wrap">
-                                    <span class="ad-badge ad-badge-depois">Depois</span>
-                                    <img src="{{ $depoisSrc }}"
-                                         alt="Depois – {{ $item->titulo }}" loading="lazy">
+                                <div class="ad-compare-layer ad-compare-antes">
+                                    <img src="{{ $antesSrc }}" alt="Antes – {{ $item->titulo }}" loading="lazy">
+                                </div>
+                                <span class="ad-badge ad-badge-antes">Antes</span>
+                                <span class="ad-badge ad-badge-depois">Depois</span>
+                                <div class="ad-compare-handle">
+                                    <div class="ad-compare-btn">
+                                        <i class="fas fa-arrows-left-right"></i>
+                                    </div>
+                                </div>
+                                <div class="ad-compare-caption">
+                                    <span class="ad-caption-tag">{{ $item->servico }}</span>
+                                    <span class="ad-caption-title">{{ $item->titulo }}</span>
                                 </div>
                             </div>
                         </div>
