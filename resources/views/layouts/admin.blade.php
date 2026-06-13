@@ -314,6 +314,12 @@
         <a href="{{ route('home') }}" target="_blank">
             <i class="fas fa-external-link-alt"></i> Ver site
         </a>
+        <form method="POST" action="{{ route('logout') }}" style="margin-top:.6rem">
+            @csrf
+            <button type="submit" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.6rem;color:rgba(255,255,255,.55);font-size:.85rem;font-family:inherit;padding:0;transition:color .15s;width:100%;touch-action:manipulation" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.55)'">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </form>
     </div>
 </aside>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>

@@ -5,10 +5,15 @@ use App\Http\Controllers\AntesDepoisController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/contato', [HomeController::class, 'contato'])->name('contato')->middleware('throttle:5,1');
+
+Route::get('/login', [AdminLoginController::class, 'showLogin'])->name('login');
+Route::post('/login', [AdminLoginController::class, 'login'])->name('login.post')->middleware('throttle:10,1');
+Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function () {
     Route::get('/', fn() => redirect()->route('admin.contatos'))->name('index');

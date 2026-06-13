@@ -61,10 +61,15 @@
         <div class="sobre-grid">
             <div class="sobre-image" data-aos="fade-right">
                 <div class="sobre-img-frame">
+                    @if(config('business.photo_url'))
+                        <img src="{{ config('business.photo_url') }}" alt="Eduarda Cardoso"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:var(--radius)">
+                    @else
                     <div class="sobre-img-placeholder">
                         <i class="fas fa-user-circle"></i>
                         <span>Foto da Profissional</span>
                     </div>
+                    @endif
                     <div class="sobre-img-badge">
                         <i class="fas fa-certificate"></i>
                         <span>Profissional Certificada</span>
@@ -159,10 +164,15 @@
 
         <div class="galeria-grid">
             @foreach($galeria as $i => $item)
-            @php $hasImg = !empty($item['imagem']); @endphp
+            @php
+                $imgSrc = null;
+                if (!empty($item['imagem'])) {
+                    $imgSrc = str_starts_with($item['imagem'], 'http') ? $item['imagem'] : \Storage::url($item['imagem']);
+                }
+            @endphp
             <div class="galeria-item" data-category="{{ $item['categoria'] }}" data-aos="zoom-in" data-aos-delay="{{ $i * 80 }}">
-                @if($hasImg)
-                    <img src="{{ Storage::url($item['imagem']) }}" alt="{{ $item['titulo'] }}" loading="lazy">
+                @if($imgSrc)
+                    <img src="{{ $imgSrc }}" alt="{{ $item['titulo'] }}" loading="lazy">
                 @else
                 <div class="galeria-placeholder">
                     <i class="fas fa-image"></i>
@@ -200,6 +210,10 @@
             <div class="ad-carousel-track-wrap" id="adTrackWrap">
                 <div class="ad-carousel-track" id="adTrack">
                     @foreach($antesDepois as $item)
+                    @php
+                        $antesSrc = str_starts_with($item->foto_antes, 'http') ? $item->foto_antes : \Storage::url($item->foto_antes);
+                        $depoisSrc = str_starts_with($item->foto_depois, 'http') ? $item->foto_depois : \Storage::url($item->foto_depois);
+                    @endphp
                     <div class="ad-slide">
                         <div class="ad-card">
                             <div class="ad-label-row">
@@ -209,13 +223,13 @@
                             <div class="ad-images">
                                 <div class="ad-img-wrap">
                                     <span class="ad-badge ad-badge-antes">Antes</span>
-                                    <img src="{{ Storage::url($item->foto_antes) }}"
+                                    <img src="{{ $antesSrc }}"
                                          alt="Antes – {{ $item->titulo }}" loading="lazy">
                                 </div>
                                 <div class="ad-divider"><i class="fas fa-arrow-right"></i></div>
                                 <div class="ad-img-wrap">
                                     <span class="ad-badge ad-badge-depois">Depois</span>
-                                    <img src="{{ Storage::url($item->foto_depois) }}"
+                                    <img src="{{ $depoisSrc }}"
                                          alt="Depois – {{ $item->titulo }}" loading="lazy">
                                 </div>
                             </div>

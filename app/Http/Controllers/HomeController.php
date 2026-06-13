@@ -24,7 +24,9 @@ class HomeController extends Controller
             ? $galeriaDb->map(fn($g) => ['titulo' => $g->titulo, 'categoria' => $g->categoria, 'imagem' => $g->imagem])->toArray()
             : $this->getGaleria();
 
-        $antesDepois = AntesDepois::where('ativo', true)->orderBy('ordem')->orderBy('created_at', 'desc')->get();
+        $antesDepoisDb = AntesDepois::where('ativo', true)->orderBy('ordem')->orderBy('created_at', 'desc')->get();
+        $antesDepois   = $antesDepoisDb->isNotEmpty() ? $antesDepoisDb : $this->getAntesDepoisExemplos();
+
         $depoimentos = $this->getDepoimentos();
 
         return view('home', compact('servicos', 'depoimentos', 'galeria', 'antesDepois'));
@@ -73,12 +75,36 @@ class HomeController extends Controller
     private function getGaleria(): array
     {
         return [
-            ['titulo' => 'Micropigmentação Natural',  'categoria' => 'micropigmentacao', 'imagem' => null],
-            ['titulo' => 'Limpeza de Pele',           'categoria' => 'limpeza',          'imagem' => null],
-            ['titulo' => 'Tratamento Facial',         'categoria' => 'facial',           'imagem' => null],
-            ['titulo' => 'Sobrancelhas Perfeitas',    'categoria' => 'micropigmentacao', 'imagem' => null],
-            ['titulo' => 'Massagem Relaxante',        'categoria' => 'massagem',         'imagem' => null],
-            ['titulo' => 'Resultado Radiofrequência', 'categoria' => 'radiofrequencia',  'imagem' => null],
+            ['titulo' => 'Micropigmentação Natural',  'categoria' => 'micropigmentacao', 'imagem' => 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=75'],
+            ['titulo' => 'Limpeza de Pele',           'categoria' => 'limpeza',          'imagem' => 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=75'],
+            ['titulo' => 'Tratamento Facial',         'categoria' => 'facial',           'imagem' => 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=75'],
+            ['titulo' => 'Sobrancelhas Perfeitas',    'categoria' => 'micropigmentacao', 'imagem' => 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=75'],
+            ['titulo' => 'Massagem Relaxante',        'categoria' => 'massagem',         'imagem' => 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600&q=75'],
+            ['titulo' => 'Resultado Radiofrequência', 'categoria' => 'radiofrequencia',  'imagem' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=75'],
         ];
+    }
+
+    private function getAntesDepoisExemplos(): \Illuminate\Support\Collection
+    {
+        return collect([
+            (object)[
+                'servico'     => 'Limpeza de Pele',
+                'titulo'      => 'Pele Renovada',
+                'foto_antes'  => 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=500&q=75',
+                'foto_depois' => 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=75',
+            ],
+            (object)[
+                'servico'     => 'Micropigmentação',
+                'titulo'      => 'Sobrancelhas Definidas',
+                'foto_antes'  => 'https://images.unsplash.com/photo-1503236823255-94609f598e71?w=500&q=75',
+                'foto_depois' => 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=75',
+            ],
+            (object)[
+                'servico'     => 'Tratamento Facial',
+                'titulo'      => 'Pele Iluminada',
+                'foto_antes'  => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=75',
+                'foto_depois' => 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=500&q=75',
+            ],
+        ]);
     }
 }
