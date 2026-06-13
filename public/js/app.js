@@ -247,9 +247,10 @@
     hintObs.observe(el);
   });
 
-  /* ---- Antes/Depois Carousel ---- */
+  /* ---- Antes/Depois Carousel (mobile only — desktop usa grade CSS) ---- */
   const adTrack = document.getElementById('adTrack');
   if (adTrack) {
+    const isMobile = () => window.innerWidth <= 640;
     const slides   = adTrack.querySelectorAll('.ad-slide');
     const dotsWrap = document.getElementById('adDots');
     const btnPrev  = document.getElementById('adPrev');
@@ -258,6 +259,7 @@
     let autoTimer;
 
     function goTo(idx) {
+      if (!isMobile()) return;
       current = (idx + slides.length) % slides.length;
       adTrack.style.transform = `translateX(-${current * 100}%)`;
       dotsWrap.querySelectorAll('.ad-dot').forEach((d, i) =>
@@ -267,6 +269,7 @@
       btnNext.disabled = slides.length <= 1;
     }
 
+    // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'ad-dot' + (i === 0 ? ' active' : '');
@@ -278,21 +281,19 @@
     btnPrev?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
     btnNext?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
 
-    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5500); }
-    function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+    function startAuto() {
+      if (!isMobile() || slides.length <= 1) return;
+      autoTimer = setInterval(() => goTo(current + 1), 5500);
+    }
+    function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
-    if (slides.length > 1) startAuto();
     goTo(0);
+    startAuto();
 
-    // Pause auto while hovering the section (user is interacting with slider)
-    const adSection = document.querySelector('.antes-depois');
-    adSection?.addEventListener('mouseenter', () => clearInterval(autoTimer));
-    adSection?.addEventListener('mouseleave', () => { if (slides.length > 1) startAuto(); });
-
-    // Swipe — only if touch didn't start on a compare element
+    // Swipe — only mobile, only if touch didn't start on a compare element
     let touchStartX = null;
     adTrack.addEventListener('touchstart', e => {
-      if (!e.target.closest('.ad-compare')) touchStartX = e.touches[0].clientX;
+      if (isMobile() && !e.target.closest('.ad-compare')) touchStartX = e.touches[0].clientX;
     }, { passive: true });
     adTrack.addEventListener('touchend', e => {
       if (touchStartX === null) return;

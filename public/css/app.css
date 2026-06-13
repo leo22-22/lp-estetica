@@ -766,6 +766,22 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
 }
 .ad-dot.active { background: var(--primary); transform: scale(1.3); }
 
+/* Desktop: grade lado a lado, sem setas/carrossel */
+@media (min-width: 641px) {
+  .ad-carousel-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  .ad-slide { flex: unset; min-width: unset; }
+  .ad-carousel-track-wrap { overflow: visible; border-radius: 0; }
+  #adPrev, #adNext, .ad-dots { display: none !important; }
+  .ad-compare { height: 340px; cursor: ew-resize; }
+}
+
 @media (max-width: 640px) {
   .ad-arrow { width: 34px; height: 34px; font-size: .8rem; }
   .ad-arrow-prev { left: .4rem; }
