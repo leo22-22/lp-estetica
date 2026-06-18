@@ -25,7 +25,8 @@
             Seja bem-vindo(a)! Atendimento acolhedor e personalizado para cuidar da saúde da sua pele e fortalecer sua autoestima.
         </p>
         <div class="hero-actions">
-            <a href="#contato" class="btn btn-primary">
+            <a href="https://wa.me/{{ config('business.whatsapp') }}?text={{ urlencode('Olá! Gostaria de agendar um horário de limpeza de pele.') }}"
+               class="btn btn-primary" target="_blank" rel="noopener">
                 <i class="fab fa-whatsapp"></i> Agendar Agora
             </a>
             <a href="#servicos" class="btn btn-outline">
@@ -102,8 +103,9 @@
                     </div>
                 </div>
 
-                <a href="#contato" class="btn btn-primary">
-                    Agendar Consulta <i class="fas fa-arrow-right"></i>
+                <a href="https://wa.me/{{ config('business.whatsapp') }}?text={{ urlencode('Olá! Gostaria de agendar um horário de limpeza de pele.') }}"
+                   class="btn btn-primary" target="_blank" rel="noopener">
+                    Agendar Consulta <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
         </div>
@@ -129,7 +131,8 @@
                 <p class="servico-desc">{{ $servico['descricao'] }}</p>
                 <div class="servico-footer">
                     <span class="servico-preco">{{ $servico['preco'] }}</span>
-                    <a href="#contato" class="servico-btn">Agendar</a>
+                    <a href="https://wa.me/{{ config('business.whatsapp') }}?text={{ urlencode('Olá! Gostaria de agendar um horário de limpeza de pele.') }}"
+                       class="servico-btn" target="_blank" rel="noopener">Agendar</a>
                 </div>
             </div>
             @endforeach

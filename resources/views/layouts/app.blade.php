@@ -108,7 +108,7 @@
                 <li><a href="#servicos" class="nav-link">Serviços</a></li>
                 <li><a href="#galeria" class="nav-link">Galeria</a></li>
                 <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-                <li><a href="#contato" class="nav-link nav-cta">Agendar</a></li>
+                <li><a href="https://wa.me/{{ config('business.whatsapp') }}?text={{ urlencode('Olá! Gostaria de agendar um horário de limpeza de pele.') }}" class="nav-link nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Agendar</a></li>
             </ul>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
