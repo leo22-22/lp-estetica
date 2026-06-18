@@ -99,11 +99,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <span class="logo-icon"><i class="fas fa-spa"></i></span>
-                <div class="logo-text">
-                    <span class="logo-name">Eduarda Cardoso</span>
-                    <span class="logo-sub">Estética</span>
-                </div>
+                <img src="{{ asset('img/logo/logo.jpeg') }}" alt="Eduarda Cardoso Estética"
+                     style="height:52px;width:auto;object-fit:contain;display:block;">
             </a>
 
             <ul class="nav-links" id="nav-links">
@@ -160,11 +157,6 @@
                 <h4>Serviços</h4>
                 <ul>
                     <li>Limpeza de Pele</li>
-                    <li>Micropigmentação</li>
-                    <li>Massagem Relaxante</li>
-                    <li>Peeling Facial</li>
-                    <li>Radiofrequência</li>
-                    <li>Drenagem Linfática</li>
                 </ul>
             </div>
 

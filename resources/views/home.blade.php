@@ -115,11 +115,11 @@
     <div class="container">
         <div class="section-header text-center" data-aos="fade-up">
             <span class="section-label">O Que Ofereço</span>
-            <h2 class="section-title">Nossos <em>Serviços</em></h2>
-            <p class="section-desc">Tratamentos pensados para realçar sua beleza com segurança, técnica e muito carinho.</p>
+            <h2 class="section-title">Limpeza de <em>Pele</em></h2>
+            <p class="section-desc">Um procedimento pensado para você — cuidado com técnica, atenção individualizada e muito carinho.</p>
         </div>
 
-        <div class="servicos-grid">
+        <div class="servicos-grid" style="max-width:680px;margin:0 auto">
             @foreach($servicos as $i => $servico)
             <div class="servico-card" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
                 <div class="servico-icon">
@@ -148,12 +148,7 @@
 
         <div class="galeria-filter" data-aos="fade-up">
             <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="micropigmentacao">Micropigmentação</button>
             <button class="filter-btn" data-filter="limpeza">Limpeza de Pele</button>
-            <button class="filter-btn" data-filter="facial">Facial</button>
-            <button class="filter-btn" data-filter="massagem">Massagem</button>
-            <button class="filter-btn" data-filter="radiofrequencia">Radiofrequência</button>
-            <button class="filter-btn" data-filter="outros">Outros</button>
         </div>
 
         <div class="galeria-grid">
