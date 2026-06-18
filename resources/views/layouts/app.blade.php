@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- ===== SEO BÁSICO ===== -->
-    <title>@yield('title', 'Eduarda Cardoso Estética – Beleza e Cuidado Para Você')</title>
-    <meta name="description" content="@yield('description', 'Especialista em limpeza de pele, micropigmentação, massagem relaxante, peeling facial e radiofrequência. Agende sua consulta!')">
-    <meta name="keywords" content="estética, micropigmentação, limpeza de pele, massagem relaxante, peeling facial, radiofrequência, drenagem linfática, beleza, tratamento facial, Eduarda Cardoso">
-    <meta name="author" content="Eduarda Cardoso Estética">
+    <title>@yield('title', 'Eduarda Cardoso Estética – Cuidado, saúde e bem-estar para a sua pele')</title>
+    <meta name="description" content="@yield('description', 'Biomédica especializada em estética. Atendimento acolhedor e personalizado em limpeza de pele e tratamentos faciais. Agende sua consulta!')">
+    <meta name="keywords" content="estética, biomédica, limpeza de pele, tratamento facial, cuidados com a pele, bem-estar, beleza, Eduarda Cardoso Picolo Santos">
+    <meta name="author" content="Eduarda Cardoso Picolo Santos">
     <meta name="robots" content="index, follow">
     <meta name="language" content="pt-BR">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -134,7 +134,7 @@
                         <span class="footer-logo-sub">Estética</span>
                     </div>
                 </div>
-                <p class="footer-desc">Realçando a beleza natural de cada cliente com carinho, técnica e dedicação.</p>
+                <p class="footer-desc">Cuidado, saúde e bem-estar para a sua pele — atendimento humanizado e personalizado.</p>
                 <div class="footer-social">
                     <a href="https://www.instagram.com/eduardacardoso.estetica" target="_blank" rel="noopener" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>

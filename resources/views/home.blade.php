@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Eduarda Cardoso Estética – Beleza e Cuidado Para Você')
+@section('title', 'Eduarda Cardoso Estética – Cuidado, saúde e bem-estar para a sua pele')
 
 @section('content')
 
@@ -16,13 +16,13 @@
 <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <span class="hero-badge">✦ Estética Especializada ✦</span>
+        <span class="hero-badge">✦ Biomédica & Esteticista ✦</span>
         <h1 class="hero-title">
-            Realce Sua<br>
-            <em>Beleza Natural</em>
+            Cuidado, saúde e<br>
+            <em>bem-estar para a sua pele</em>
         </h1>
         <p class="hero-subtitle">
-            Tratamentos personalizados com técnicas avançadas para você se sentir incrível por dentro e por fora.
+            Seja bem-vindo(a)! Atendimento acolhedor e personalizado para cuidar da saúde da sua pele e fortalecer sua autoestima.
         </p>
         <div class="hero-actions">
             <a href="#contato" class="btn btn-primary">
@@ -66,7 +66,7 @@
                          style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:var(--radius)">
                     <div class="sobre-img-badge">
                         <i class="fas fa-certificate"></i>
-                        <span>Profissional Certificada</span>
+                        <span>Biomédica & Esteticista</span>
                     </div>
                 </div>
             </div>
@@ -74,31 +74,31 @@
             <div class="sobre-content" data-aos="fade-left">
                 <span class="section-label">Sobre Mim</span>
                 <h2 class="section-title">
-                    Olá, sou <em>Eduarda Cardoso</em>
+                    Olá, sou <em>Eduarda Cardoso Picolo Santos</em>
                 </h2>
                 <p class="sobre-text">
-                    Sou esteticista apaixonada pelo que faço, com mais de 5 anos de experiência em tratamentos faciais e corporais. Minha missão é ajudar cada cliente a se sentir mais confiante e bonita, respeitando a individualidade de cada uma.
+                    Sou biomédica e atualmente estou me especializando na área da estética por meio de uma pós-graduação. Meu objetivo é proporcionar um atendimento acolhedor e de qualidade, ajudando cada cliente a cuidar da saúde da pele e a fortalecer sua autoestima.
                 </p>
                 <p class="sobre-text">
-                    Trabalho com as técnicas mais modernas do mercado, sempre me atualizando para oferecer os melhores resultados. Meu studio foi criado para ser um espaço de acolhimento, beleza e bem-estar.
+                    Acredito que pequenos cuidados fazem grande diferença na forma como nos sentimos e nos enxergamos. Será um prazer cuidar da sua pele e fazer parte da sua jornada de autocuidado.
                 </p>
 
                 <div class="sobre-features">
                     <div class="feature-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Técnicas avançadas e certificadas</span>
+                        <span>Atendimento humanizado</span>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Atendimento personalizado</span>
+                        <span>Ambiente confortável e acolhedor</span>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Produtos de alta qualidade</span>
+                        <span>Avaliação individualizada</span>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-check-circle"></i>
-                        <span>Ambiente seguro e acolhedor</span>
+                        <span>Pós-graduação em estética</span>
                     </div>
                 </div>
 
@@ -252,24 +252,24 @@
     <div class="container">
         <div class="diferenciais-grid">
             <div class="diferencial" data-aos="fade-up" data-aos-delay="0">
-                <div class="diferencial-icon"><i class="fas fa-award"></i></div>
-                <h4>Qualidade Garantida</h4>
-                <p>Usamos apenas produtos premium e técnicas certificadas para o melhor resultado.</p>
-            </div>
-            <div class="diferencial" data-aos="fade-up" data-aos-delay="100">
                 <div class="diferencial-icon"><i class="fas fa-heart"></i></div>
                 <h4>Atendimento Humanizado</h4>
-                <p>Cada cliente recebe atenção personalizada, porque cada pele é única.</p>
+                <p>Cada cliente recebe atenção cuidadosa e personalizada, porque acreditamos que cuidar da pele também é cuidar da autoestima.</p>
+            </div>
+            <div class="diferencial" data-aos="fade-up" data-aos-delay="100">
+                <div class="diferencial-icon"><i class="fas fa-spa"></i></div>
+                <h4>Ambiente Acolhedor</h4>
+                <p>Um espaço confortável e tranquilo pensado para que você se sinta bem desde o momento em que chega.</p>
             </div>
             <div class="diferencial" data-aos="fade-up" data-aos-delay="200">
-                <div class="diferencial-icon"><i class="fas fa-shield-alt"></i></div>
-                <h4>Higiene e Segurança</h4>
-                <p>Protocolos rigorosos de biossegurança para sua total tranquilidade.</p>
+                <div class="diferencial-icon"><i class="fas fa-search"></i></div>
+                <h4>Avaliação Individualizada</h4>
+                <p>Cada atendimento começa com uma avaliação cuidadosa das características e necessidades únicas de cada cliente.</p>
             </div>
             <div class="diferencial" data-aos="fade-up" data-aos-delay="300">
-                <div class="diferencial-icon"><i class="fas fa-star"></i></div>
-                <h4>Resultados Reais</h4>
-                <p>Mais de 500 clientes satisfeitas com resultados que falam por si mesmos.</p>
+                <div class="diferencial-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h4>Formação Especializada</h4>
+                <p>Biomédica em constante atualização através de pós-graduação em estética para oferecer tratamentos seguros e modernos.</p>
             </div>
         </div>
     </div>
