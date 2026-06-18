@@ -50,7 +50,7 @@ class HomeController extends Controller
                 'icone'     => 'fas fa-spa',
                 'titulo'    => 'Limpeza de Pele',
                 'descricao' => 'Procedimento essencial para manter a pele saudável, removendo impurezas, células mortas, excesso de oleosidade e cravos. Contribui para a prevenção de acne e favorece a absorção dos produtos da sua rotina de cuidados diários. Cada atendimento é realizado de forma cuidadosa, respeitando as características e necessidades individuais de cada cliente.',
-                'preco'     => 'A partir de R$ 120',
+                'preco'     => 'R$ 85',
             ],
         ];
     }

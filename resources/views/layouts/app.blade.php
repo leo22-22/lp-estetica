@@ -99,8 +99,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <img src="{{ asset('img/logo/logo.jpeg') }}" alt="Eduarda Cardoso Estética"
-                     style="height:52px;width:auto;object-fit:contain;display:block;">
+                <img src="{{ asset('img/logo/logo.png') }}" alt="Eduarda Cardoso Estética"
+                     class="nav-logo-img">
             </a>
 
             <ul class="nav-links" id="nav-links">
@@ -125,11 +125,8 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <i class="fas fa-spa"></i>
-                    <div>
-                        <span class="footer-logo-name">Eduarda Cardoso</span>
-                        <span class="footer-logo-sub">Estética</span>
-                    </div>
+                    <img src="{{ asset('img/logo/logo.png') }}" alt="Eduarda Cardoso Estética"
+                         class="footer-logo-img">
                 </div>
                 <p class="footer-desc">Cuidado, saúde e bem-estar para a sua pele — atendimento humanizado e personalizado.</p>
                 <div class="footer-social">

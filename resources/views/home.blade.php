@@ -391,7 +391,7 @@
                         <div class="form-group">
                             <label for="telefone">WhatsApp / Telefone *</label>
                             <input type="tel" id="telefone" name="telefone" value="{{ old('telefone') }}"
-                                   placeholder="(11) 9 9999-9999" required>
+                                   placeholder="(18) 9 9157-2291" required>
                         </div>
                     </div>
 
