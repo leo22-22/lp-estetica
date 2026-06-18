@@ -127,7 +127,7 @@
     }
 
     // 1. Abre WhatsApp de forma síncrona (antes de qualquer await) para não ser bloqueado por popup blockers
-    const wpp   = (this.dataset.wpp || '5511999999999').replace(/\D/g, '');
+    const wpp   = (this.dataset.wpp || '5518991572291').replace(/\D/g, '');
     const lines = ['Olá! Gostaria de agendar um horário.', ''];
     lines.push(`*Nome:* ${nome}`);
     lines.push(`*Telefone:* ${telefone}`);
