@@ -76,10 +76,11 @@ class HomeController extends Controller
     private function getDepoimentos(): array
     {
         return [
-            ['nome' => 'Ana Paula M.', 'foto' => null, 'texto' => 'A Eduarda é incrível! Fiz a limpeza de pele e ficou perfeito, minha pele nunca esteve tão saudável. Atendimento impecável, ambiente lindo e ela é muito cuidadosa. Super recomendo!', 'servico' => 'Limpeza de Pele', 'estrelas' => 5],
-            ['nome' => 'Carla S.',     'foto' => null, 'texto' => 'Finalmente encontrei uma profissional de confiança! A limpeza de pele foi maravilhosa, minha pele ficou completamente renovada. Já agendei a próxima sessão!',                                  'servico' => 'Limpeza de Pele', 'estrelas' => 5],
-            ['nome' => 'Fernanda L.',  'foto' => null, 'texto' => 'Atendimento humanizado e muito cuidadoso! Saí completamente satisfeita, pele renovada e muito mais saudável. A Eduarda tem um dom especial para fazer você se sentir bem.',                         'servico' => 'Limpeza de Pele', 'estrelas' => 5],
-            ['nome' => 'Juliana R.',   'foto' => null, 'texto' => 'Minha pele nunca ficou tão bonita! A profissional é muito atenciosa e o resultado foi além das minhas expectativas. Ambiente acolhedor e atendimento de alta qualidade.',                             'servico' => 'Limpeza de Pele', 'estrelas' => 5],
+            ['nome' => 'Amanda',   'foto' => null, 'texto' => 'Oii dudinha, tudo bem? Amei a experiência! Além do atendimento ser excelente, você foi muito atenciosa e cuidadosa comigo. Minha pele ficou incrível depois da limpeza, com sensação de pele macia. Com certeza faria novamente e recomendo seu trabalho! 💖', 'servico' => 'Limpeza de Pele', 'estrelas' => 5],
+            ['nome' => 'Chirlei',  'foto' => null, 'texto' => 'Fiz minha limpeza de pele com essa maravilhosa — super atenciosa, calma e mãos de fada! Minha pele ficou super macia e mais suave, amei! Super recomendo. Obrigada Eduarda pelo profissionalismo e carinho ❤️', 'servico' => 'Limpeza de Pele', 'estrelas' => 5],
+            ['nome' => 'Duda',     'foto' => null, 'texto' => 'Duda, ameei a limpeza!! 😍 Você tem mãos de fada — saí até mais leve, pele iluminada 💖 Quero voltar mais vezes!', 'servico' => 'Limpeza de Pele', 'estrelas' => 5],
+            ['nome' => 'Idanilde', 'foto' => null, 'texto' => 'Nunca havia feito uma limpeza de pele antes, essa foi minha primeira vez. A Eduarda me esclareceu certas dúvidas e vi que nossa pele realmente precisa de cuidados especiais. Amei o trabalho e o atendimento — sabe muito bem o que se propõe a fazer. A minha pele agradece essas mãozinhas. Obrigada pelos cuidados, com certeza voltarei! ❤️', 'servico' => 'Limpeza de Pele', 'estrelas' => 5],
+            ['nome' => 'Pedro',    'foto' => null, 'texto' => 'Ótima profissional, educada e simpática. Limpeza relaxante e com ótimos resultados! Preço totalmente acessível.', 'servico' => 'Limpeza de Pele', 'estrelas' => 5],
         ];
     }
 }
