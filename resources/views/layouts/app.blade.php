@@ -54,7 +54,7 @@
       "@@context": "https://schema.org",
       "@@type": "BeautySalon",
       "name": "Eduarda Cardoso Estética",
-      "description": "Especialista em limpeza de pele, micropigmentação, massagem relaxante, peeling facial e radiofrequência.",
+      "description": "Biomédica especializada em limpeza de pele. Atendimento acolhedor e personalizado.",
       "url": "{{ config('app.url') }}",
       "logo": "{{ asset('favicon.svg') }}",
       "image": "{{ asset('images/og-cover.jpg') }}",
