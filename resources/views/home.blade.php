@@ -33,22 +33,6 @@
                 Conhecer Serviços
             </a>
         </div>
-        <div class="hero-stats">
-            <div class="stat">
-                <strong>500+</strong>
-                <span>Clientes Satisfeitas</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <strong>5+</strong>
-                <span>Anos de Experiência</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <strong>10+</strong>
-                <span>Tratamentos</span>
-            </div>
-        </div>
     </div>
     <div class="hero-scroll">
         <span>Deslize para baixo</span>
