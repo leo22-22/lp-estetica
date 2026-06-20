@@ -169,13 +169,14 @@
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-clock"></i>
-                    <span>Seg–Sex: 9h às 19h<br>Sáb: 9h às 14h</span>
+                    <span>Entre em contato para saber mais</span>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>&copy; {{ date('Y') }} Eduarda Cardoso Estética. Todos os direitos reservados.</p>
+            <p class="footer-dev">Desenvolvido por <a href="https://wa.me/5518981006677" target="_blank" rel="noopener">LeonardoPicolo S. Ranuci</a></p>
         </div>
     </footer>
 

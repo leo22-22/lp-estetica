@@ -16,7 +16,7 @@
 <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <span class="hero-badge">✦ Biomédica & Esteticista ✦</span>
+        <span class="hero-badge">✦ Biomédica ✦</span>
         <h1 class="hero-title">
             Cuidado, saúde e<br>
             <em>bem-estar para a sua pele</em>
@@ -51,7 +51,7 @@
                          style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:var(--radius)">
                     <div class="sobre-img-badge">
                         <i class="fas fa-certificate"></i>
-                        <span>Biomédica & Esteticista</span>
+                        <span>Biomédica</span>
                     </div>
                 </div>
             </div>
@@ -334,8 +334,7 @@
                         <div class="info-icon"><i class="fas fa-clock"></i></div>
                         <div>
                             <h4>Horário de Atendimento</h4>
-                            <span>Segunda a Sexta: 9h às 19h</span><br>
-                            <span>Sábado: 9h às 14h</span>
+                            <span>Entre em contato para saber mais</span>
                         </div>
                     </div>
                     <div class="info-item">
