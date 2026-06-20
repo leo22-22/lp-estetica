@@ -21,13 +21,27 @@
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.getElementById('nav-links');
 
+  const closeNav = () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
   navToggle?.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   navLinks?.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
+    link.addEventListener('click', closeNav);
+  });
+
+  // close on backdrop click (click outside menu)
+  document.addEventListener('click', e => {
+    if (navLinks?.classList.contains('open') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+      closeNav();
+    }
   });
 
   /* ---- Smooth scroll for all anchor links ---- */
