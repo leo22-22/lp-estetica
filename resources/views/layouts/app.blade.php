@@ -13,6 +13,7 @@
     <meta name="robots" content="index, follow">
     <meta name="language" content="pt-BR">
     <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="google-site-verification" content="spa9i8z4UbmjFRljXgFTCU23wGidbdb6HIOusVld8hw">
 
     <!-- ===== FAVICON ===== -->
     <!-- Favicon SVG (aparece na aba e na barra de endereço) -->
