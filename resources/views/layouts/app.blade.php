@@ -7,25 +7,22 @@
 
     <!-- ===== SEO BÁSICO ===== -->
     <title>@yield('title', 'Eduarda Cardoso Estética – Cuidado, saúde e bem-estar para a sua pele')</title>
-    <meta name="description" content="@yield('description', 'Biomédica especializada em estética. Atendimento acolhedor e personalizado em limpeza de pele e tratamentos faciais. Agende sua consulta!')">
-    <meta name="keywords" content="estética, biomédica, limpeza de pele, tratamento facial, cuidados com a pele, bem-estar, beleza, Eduarda Cardoso Picolo Santos">
+    <meta name="description" content="@yield('description', 'Biomédica especializada em limpeza de pele. Atendimento acolhedor, humanizado e personalizado. Agende pelo WhatsApp!')">
+    <meta name="keywords" content="estética, biomédica, limpeza de pele, limpeza de pele profissional, tratamento facial, cuidados com a pele, bem-estar, beleza, Eduarda Cardoso, Eduarda Cardoso Picolo Santos, esteticista, pele saudável">
     <meta name="author" content="Eduarda Cardoso Picolo Santos">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="language" content="pt-BR">
+    <meta name="rating" content="general">
+    <meta name="revisit-after" content="7 days">
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="google-site-verification" content="spa9i8z4UbmjFRljXgFTCU23wGidbdb6HIOusVld8hw">
 
     <!-- ===== FAVICON ===== -->
-    <!-- Favicon SVG (aparece na aba e na barra de endereço) -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    <!-- Fallback PNG -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16.png') }}">
-    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
-    <!-- Web App Manifest -->
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-    <!-- Cor da barra do browser (mobile) -->
     <meta name="theme-color" content="#C4748C">
     <meta name="msapplication-TileColor" content="#C4748C">
     <meta name="msapplication-TileImage" content="{{ asset('favicon-32.png') }}">
@@ -33,21 +30,21 @@
     <!-- ===== OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ===== -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('og_title', 'Eduarda Cardoso Estética – Beleza e Cuidado Para Você')">
-    <meta property="og:description" content="@yield('og_description', 'Especialista em limpeza de pele, micropigmentação, massagem e muito mais. Resultados reais, atendimento personalizado.')">
-    <meta property="og:image" content="@yield('og_image', asset('images/og-cover.jpg'))">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Eduarda Cardoso Estética">
+    <meta property="og:title" content="@yield('og_title', 'Eduarda Cardoso Estética – Limpeza de Pele com Biomédica')">
+    <meta property="og:description" content="@yield('og_description', 'Limpeza de pele realizada por biomédica especializada. Atendimento humanizado e personalizado. Agende agora pelo WhatsApp!')">
+    <meta property="og:image" content="@yield('og_image', asset('img/profissional.jpeg'))">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Eduarda Cardoso – Biomédica Esteticista">
     <meta property="og:site_name" content="Eduarda Cardoso Estética">
     <meta property="og:locale" content="pt_BR">
 
     <!-- ===== TWITTER CARD ===== -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('og_title', 'Eduarda Cardoso Estética – Beleza e Cuidado Para Você')">
-    <meta name="twitter:description" content="@yield('og_description', 'Especialista em limpeza de pele, micropigmentação, massagem e muito mais.')">
-    <meta name="twitter:image" content="@yield('og_image', asset('images/og-cover.jpg'))">
-    <meta name="twitter:image:alt" content="Eduarda Cardoso Estética">
+    <meta name="twitter:site" content="@eduardacardoso.estetica">
+    <meta name="twitter:title" content="@yield('og_title', 'Eduarda Cardoso Estética – Limpeza de Pele com Biomédica')">
+    <meta name="twitter:description" content="@yield('og_description', 'Limpeza de pele realizada por biomédica especializada. Atendimento humanizado e personalizado.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('img/profissional.jpeg'))">
+    <meta name="twitter:image:alt" content="Eduarda Cardoso – Biomédica Esteticista">
 
     <!-- ===== SCHEMA.ORG (Google Rich Results) ===== -->
     <script type="application/ld+json">
@@ -55,35 +52,56 @@
       "@@context": "https://schema.org",
       "@@type": "BeautySalon",
       "name": "Eduarda Cardoso Estética",
-      "description": "Biomédica especializada em limpeza de pele. Atendimento acolhedor e personalizado.",
+      "description": "Biomédica especializada em limpeza de pele. Atendimento acolhedor, humanizado e personalizado.",
       "url": "{{ config('app.url') }}",
-      "logo": "{{ asset('favicon.svg') }}",
-      "image": "{{ asset('images/og-cover.jpg') }}",
-      "telephone": "+55{{ config('business.whatsapp') }}",
+      "logo": "{{ asset('img/logo/logo.png') }}",
+      "image": "{{ asset('img/profissional.jpeg') }}",
+      "telephone": "+5518991572291",
+      "contactPoint": {
+        "@@type": "ContactPoint",
+        "telephone": "+5518991572291",
+        "contactType": "customer service",
+        "availableLanguage": "Portuguese",
+        "contactOption": "TollFree"
+      },
       "sameAs": [
-        "https://www.instagram.com/eduardacardoso.estetica"
+        "https://www.instagram.com/eduardacardoso.estetica",
+        "https://wa.me/5518991572291"
       ],
-      "openingHoursSpecification": [
-        {
-          "@@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "09:00",
-          "closes": "19:00"
-        },
-        {
-          "@@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "14:00"
-        }
-      ],
-      "priceRange": "$$"
+      "hasOfferCatalog": {
+        "@@type": "OfferCatalog",
+        "name": "Serviços de Estética",
+        "itemListElement": [
+          {
+            "@@type": "Offer",
+            "itemOffered": {
+              "@@type": "Service",
+              "name": "Limpeza de Pele",
+              "description": "Limpeza de pele profissional realizada por biomédica especializada."
+            },
+            "price": "85.00",
+            "priceCurrency": "BRL"
+          }
+        ]
+      },
+      "employee": {
+        "@@type": "Person",
+        "name": "Eduarda Cardoso Picolo Santos",
+        "jobTitle": "Biomédica",
+        "sameAs": "https://www.instagram.com/eduardacardoso.estetica"
+      },
+      "priceRange": "R$"
     }
     </script>
 
-    <!-- ===== FONTS ===== -->
+    <!-- ===== PRELOAD RECURSOS CRÍTICOS ===== -->
+    <link rel="preload" as="image" href="{{ asset('img/logo/logo.png') }}">
+    <link rel="preload" as="image" href="{{ asset('img/profissional.jpeg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- ===== FONTS ===== -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->

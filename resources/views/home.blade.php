@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Eduarda Cardoso Estética – Cuidado, saúde e bem-estar para a sua pele')
+@section('title', 'Eduarda Cardoso Estética – Limpeza de Pele | Biomédica em Estética')
+@section('description', 'Biomédica especializada em limpeza de pele. Atendimento acolhedor, humanizado e personalizado. Agende pelo WhatsApp!')
+@section('og_title', 'Eduarda Cardoso Estética – Limpeza de Pele com Biomédica')
+@section('og_description', 'Limpeza de pele realizada por biomédica especializada. Atendimento humanizado e personalizado. Agende agora pelo WhatsApp!')
+@section('og_image', asset('img/profissional.jpeg'))
 
 @section('content')
 
@@ -46,7 +50,7 @@
         <div class="sobre-grid">
             <div class="sobre-image" data-aos="fade-right">
                 <div class="sobre-img-frame">
-                    @php $photoUrl = config('business.photo_url') ?: asset('img/profissional.png'); @endphp
+                    @php $photoUrl = config('business.photo_url') ?: asset('img/profissional.jpeg'); @endphp
                     <img src="{{ $photoUrl }}" alt="Eduarda Cardoso"
                          style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:var(--radius)">
                     <div class="sobre-img-badge">
