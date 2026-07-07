@@ -49,6 +49,14 @@
 
     <!-- ===== SCHEMA.ORG (Google Rich Results) ===== -->
     <script type="application/ld+json">
+    [
+    {
+      "@@context": "https://schema.org",
+      "@@type": "WebSite",
+      "name": "Eduarda Cardoso Estética",
+      "alternateName": "Eduarda Cardoso Estetica",
+      "url": "{{ config('app.url') }}"
+    },
     {
       "@@context": "https://schema.org",
       "@@type": "BeautySalon",
@@ -93,6 +101,7 @@
       },
       "priceRange": "R$"
     }
+    ]
     </script>
 
     <!-- ===== PRELOAD RECURSOS CRÍTICOS ===== -->
