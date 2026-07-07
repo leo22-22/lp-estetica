@@ -14,6 +14,8 @@
     <meta name="language" content="pt-BR">
     <meta name="rating" content="general">
     <meta name="revisit-after" content="7 days">
+    <meta name="geo.region" content="BR-SP">
+    <meta name="geo.placename" content="Presidente Venceslau, SP">
     <link rel="canonical" href="{{ url()->current() }}">
     <meta name="google-site-verification" content="spa9i8z4UbmjFRljXgFTCU23wGidbdb6HIOusVld8hw">
 
@@ -66,6 +68,16 @@
       "logo": "{{ asset('img/logo/logo.png') }}",
       "image": "{{ asset('img/profissional.jpeg') }}",
       "telephone": "+5518991572291",
+      "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "Presidente Venceslau",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "areaServed": {
+        "@@type": "City",
+        "name": "Presidente Venceslau"
+      },
       "contactPoint": {
         "@@type": "ContactPoint",
         "telephone": "+5518991572291",

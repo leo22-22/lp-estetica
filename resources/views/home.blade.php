@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Eduarda Cardoso Estética – Limpeza de Pele | Biomédica em Estética')
-@section('description', 'Biomédica especializada em limpeza de pele. Atendimento acolhedor, humanizado e personalizado. Agende pelo WhatsApp!')
-@section('og_title', 'Eduarda Cardoso Estética – Limpeza de Pele com Biomédica')
-@section('og_description', 'Limpeza de pele realizada por biomédica especializada. Atendimento humanizado e personalizado. Agende agora pelo WhatsApp!')
+@section('title', 'Limpeza de Pele em Presidente Venceslau | Eduarda Cardoso Estética')
+@section('description', 'Biomédica especializada em limpeza de pele em Presidente Venceslau, SP. Atendimento humanizado e personalizado. Agende pelo WhatsApp!')
+@section('og_title', 'Limpeza de Pele em Presidente Venceslau – Eduarda Cardoso Estética')
+@section('og_description', 'Limpeza de pele profissional em Presidente Venceslau, SP. Atendimento realizado por biomédica especializada. Agende agora pelo WhatsApp!')
 @section('og_image', asset('img/profissional.jpeg'))
 
 @section('content')
@@ -66,10 +66,10 @@
                     Olá, sou <em>Eduarda Cardoso Picolo Santos</em>
                 </h2>
                 <p class="sobre-text">
-                    Sou biomédica e atualmente estou me especializando na área da estética por meio de uma pós-graduação. Meu objetivo é proporcionar um atendimento acolhedor e de qualidade, ajudando cada cliente a cuidar da saúde da pele e a fortalecer sua autoestima.
+                    Sou biomédica e atualmente estou me especializando na área da estética por meio de uma pós-graduação. Atendo em <strong>Presidente Venceslau, SP</strong>, com o objetivo de proporcionar um atendimento acolhedor e de qualidade, ajudando cada cliente a cuidar da saúde da pele e a fortalecer sua autoestima.
                 </p>
                 <p class="sobre-text">
-                    Acredito que pequenos cuidados fazem grande diferença na forma como nos sentimos e nos enxergamos. Será um prazer cuidar da sua pele e fazer parte da sua jornada de autocuidado.
+                    Acredito que pequenos cuidados fazem grande diferença na forma como nos sentimos e nos enxergamos. Será um prazer cuidar da sua pele e fazer parte da sua jornada de autocuidado aqui em Presidente Venceslau.
                 </p>
 
                 <div class="sobre-features">
