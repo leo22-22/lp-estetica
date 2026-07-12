@@ -169,6 +169,15 @@
     ]
     </script>
 
+    <!-- ===== GOOGLE ANALYTICS GA4 ===== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH0MYC3SVT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EH0MYC3SVT');
+    </script>
+
     <!-- ===== PRELOAD RECURSOS CRÍTICOS ===== -->
     <link rel="preload" as="image" href="{{ asset('img/logo/logo.png') }}">
     <link rel="preload" as="image" href="{{ asset('img/profissional.jpeg') }}">
