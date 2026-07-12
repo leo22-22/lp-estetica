@@ -170,12 +170,12 @@
     </script>
 
     <!-- ===== GOOGLE ANALYTICS GA4 ===== -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH0MYC3SVT"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7YV11QDST"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-EH0MYC3SVT');
+      gtag('config', 'G-G7YV11QDST');
     </script>
 
     <!-- ===== PRELOAD RECURSOS CRÍTICOS ===== -->
