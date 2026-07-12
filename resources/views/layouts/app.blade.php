@@ -111,7 +111,60 @@
         "jobTitle": "Biomédica",
         "sameAs": "https://www.instagram.com/eduardacardoso.estetica"
       },
+      "aggregateRating": {
+        "@@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "priceRange": "R$"
+    },
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@@type": "Question",
+          "name": "O que é limpeza de pele profissional?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "A limpeza de pele profissional é um procedimento estético realizado por especialista que remove impurezas, células mortas, excesso de oleosidade e cravos da pele, promovendo uma pele mais saudável, suave e luminosa."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Quanto custa a limpeza de pele em Presidente Venceslau?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "A limpeza de pele realizada pela Eduarda Cardoso Estética em Presidente Venceslau custa R$ 85. O procedimento é realizado por biomédica especializada com atendimento humanizado e personalizado."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Quanto tempo dura a limpeza de pele?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "O procedimento de limpeza de pele dura em média 60 a 90 minutos, variando conforme as necessidades individuais de cada cliente."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Com que frequência devo fazer limpeza de pele?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "O recomendado é realizar a limpeza de pele a cada 30 a 45 dias para manter a pele sempre saudável e livre de impurezas. A frequência ideal pode variar conforme o tipo de pele de cada pessoa."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Como agendar uma limpeza de pele em Presidente Venceslau?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Para agendar uma limpeza de pele com a Eduarda Cardoso Estética em Presidente Venceslau, basta entrar em contato pelo WhatsApp (18) 99157-2291 ou preencher o formulário no site eduardacardosoestetica.com.br."
+          }
+        }
+      ]
     }
     ]
     </script>
