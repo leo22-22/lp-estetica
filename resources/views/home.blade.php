@@ -105,11 +105,11 @@
     <div class="container">
         <div class="section-header text-center" data-aos="fade-up">
             <span class="section-label">O Que Ofereço</span>
-            <h2 class="section-title">Limpeza de <em>Pele</em></h2>
-            <p class="section-desc">Um procedimento pensado para você — cuidado com técnica, atenção individualizada e muito carinho.</p>
+            <h2 class="section-title">Nossos <em>Serviços</em></h2>
+            <p class="section-desc">Cuidado com técnica, atenção individualizada e muito carinho — conheça os tratamentos disponíveis.</p>
         </div>
 
-        <div class="servicos-grid" style="max-width:680px;margin:0 auto">
+        <div class="servicos-grid">
             @foreach($servicos as $i => $servico)
             <div class="servico-card" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
                 <div class="servico-icon">
@@ -118,12 +118,51 @@
                 <h3 class="servico-titulo">{{ $servico['titulo'] }}</h3>
                 <p class="servico-desc">{{ $servico['descricao'] }}</p>
                 <div class="servico-footer">
-                    <span class="servico-preco">{{ $servico['preco'] }}</span>
-                    <a href="https://wa.me/{{ config('business.whatsapp') }}?text={{ urlencode('Olá! Gostaria de agendar um horário de limpeza de pele.') }}"
+                    <div>
+                        <span class="servico-preco">{{ $servico['preco'] }}</span>
+                        @if(!empty($servico['pacote']))
+                        <span class="servico-pacote">{{ $servico['pacote'] }}</span>
+                        @endif
+                    </div>
+                    <a href="https://wa.me/{{ config('business.whatsapp') }}?text={{ urlencode('Olá! Gostaria de agendar um horário de ' . $servico['titulo'] . '.') }}"
                        class="servico-btn" target="_blank" rel="noopener">Agendar</a>
                 </div>
             </div>
             @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- ===== FORMAS DE PAGAMENTO ===== -->
+<section class="pagamento section" id="pagamento">
+    <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+            <span class="section-label">Mais Praticidade</span>
+            <h2 class="section-title">Formas de <em>Pagamento</em></h2>
+            <p class="section-desc">Mais praticidade e segurança para você!</p>
+        </div>
+
+        <div class="pagamento-grid">
+            <div class="pagamento-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="pagamento-icon"><i class="fas fa-qrcode"></i></div>
+                <h4>Pix / Dinheiro</h4>
+                <p>À vista, com confirmação rápida e prática!</p>
+            </div>
+            <div class="pagamento-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="pagamento-icon"><i class="fas fa-credit-card"></i></div>
+                <h4>Débito</h4>
+                <p>Pagamento à vista, sem acréscimo.</p>
+            </div>
+            <div class="pagamento-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="pagamento-icon"><i class="fas fa-credit-card"></i></div>
+                <h4>Crédito</h4>
+                <p>Aceitamos cartão de crédito em até 3x, com acréscimo conforme a parcela.</p>
+            </div>
+        </div>
+
+        <div class="pagamento-nota" data-aos="fade-up">
+            <i class="fas fa-circle-exclamation"></i>
+            <span><strong>Importante:</strong> os valores da nossa tabela são para pagamento à vista. No cartão de crédito, haverá acréscimo conforme o número de parcelas.</span>
         </div>
     </div>
 </section>

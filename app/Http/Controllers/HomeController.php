@@ -20,11 +20,13 @@ class HomeController extends Controller
 
     public function contato(Request $request)
     {
+        $nomesServicos = array_column($this->getServicos(), 'titulo');
+
         $validated = $request->validate([
             'nome'     => 'required|string|max:100',
             'telefone' => ['required', 'string', 'max:20', 'regex:/^\(\d{2}\)\s?\d{4,5}-\d{4}$/'],
             'email'    => 'nullable|email|max:100',
-            'servico'  => ['required', 'string', Rule::in(['Limpeza de Pele'])],
+            'servico'  => ['required', 'string', Rule::in($nomesServicos)],
             'mensagem' => 'nullable|string|max:500',
         ], [
             'nome.required'     => 'O nome é obrigatório.',
@@ -50,7 +52,29 @@ class HomeController extends Controller
                 'icone'     => 'fas fa-spa',
                 'titulo'    => 'Limpeza de Pele',
                 'descricao' => 'Procedimento essencial para manter a pele saudável, removendo impurezas, células mortas, excesso de oleosidade e cravos. Contribui para a prevenção de acne e favorece a absorção dos produtos da sua rotina de cuidados diários. Cada atendimento é realizado de forma cuidadosa, respeitando as características e necessidades individuais de cada cliente.',
-                'preco'     => 'R$ 85',
+                'preco'     => 'R$ 85,00',
+                'pacote'    => null,
+            ],
+            [
+                'icone'     => 'fas fa-hand-holding-medical',
+                'titulo'    => 'Ventosaterapia',
+                'descricao' => 'Técnica que auxilia no alívio de dores e tensões musculares, promovendo relaxamento e bem-estar. Estimula o fluxo sanguíneo local e auxilia na recuperação muscular.',
+                'preco'     => 'R$ 50,00',
+                'pacote'    => 'R$ 90,00 · pacote com 2 sessões',
+            ],
+            [
+                'icone'     => 'fas fa-water',
+                'titulo'    => 'Drenagem Linfática',
+                'descricao' => 'Massagem leve e ritmada que estimula o sistema linfático, reduzindo inchaço e retenção de líquidos. Ativa a circulação e promove leveza, bem-estar e relaxamento.',
+                'preco'     => 'R$ 90,00',
+                'pacote'    => 'R$ 425,00 · pacote com 5 sessões',
+            ],
+            [
+                'icone'     => 'fas fa-temperature-high',
+                'titulo'    => 'Drenagem Linfática + Manta Térmica',
+                'descricao' => 'A combinação perfeita para desinchar, eliminar toxinas e renovar. A manta térmica eleva a temperatura corporal e potencializa a drenagem, reduzindo medidas e melhorando a circulação e a oxigenação dos tecidos.',
+                'preco'     => 'R$ 110,00',
+                'pacote'    => 'R$ 525,00 · pacote com 5 sessões',
             ],
         ];
     }
