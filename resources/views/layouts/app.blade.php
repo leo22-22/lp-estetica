@@ -283,16 +283,17 @@
         </div>
     </footer>
 
+    <!-- Instagram Float Button -->
+    <a href="{{ config('business.instagram') }}"
+       class="instagram-float" target="_blank" rel="noopener" aria-label="Ver Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/{{ config('business.whatsapp') }}?text=Olá! Gostaria de agendar um horário."
        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo">
-        <i class="fas fa-chevron-up"></i>
-    </button>
 
     <script src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('js/app.js')) }}"></script>
 </body>

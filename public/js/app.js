@@ -5,15 +5,12 @@
 
   /* ---- Navbar scroll ---- */
   const navbar = document.getElementById('navbar');
-  const backToTop = document.getElementById('back-to-top');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) {
       navbar.classList.add('scrolled');
-      backToTop.classList.add('visible');
     } else {
       navbar.classList.remove('scrolled');
-      backToTop.classList.remove('visible');
     }
   }, { passive: true });
 
@@ -60,7 +57,6 @@
   });
 
   /* ---- Back to top ---- */
-  backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* ---- Gallery filter ---- */
   const filterBtns = document.querySelectorAll('.filter-btn');
