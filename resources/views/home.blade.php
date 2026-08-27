@@ -384,9 +384,18 @@
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
                             <h4>Localização</h4>
-                            <span>Atendimento com hora marcada</span>
+                            <a href="{{ config('business.address_maps_url') }}" target="_blank" rel="noopener">{{ config('business.address') }}</a>
                         </div>
                     </div>
+                </div>
+
+                <div class="contato-map">
+                    <iframe
+                        src="{{ config('business.address_maps_embed') }}"
+                        width="100%" height="220" style="border:0"
+                        allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localização no Google Maps"></iframe>
                 </div>
 
                 <a href="https://wa.me/{{ config('business.whatsapp') }}?text=Olá! Gostaria de agendar um horário."

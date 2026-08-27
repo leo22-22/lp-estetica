@@ -963,6 +963,15 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
 .info-item a, .info-item span { font-size: .9rem; color: var(--text-light); }
 .info-item a:hover { color: var(--primary); }
 
+.contato-map {
+  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  line-height: 0;
+}
+.contato-map iframe { display: block; }
+
 /* Form */
 .contato-form-wrapper {
   background: var(--white);

@@ -70,6 +70,7 @@
       "telephone": "+5518991572291",
       "address": {
         "@@type": "PostalAddress",
+        "streetAddress": "Rua Almirante Barroso, nº 74",
         "addressLocality": "Presidente Venceslau",
         "addressRegion": "SP",
         "addressCountry": "BR"
